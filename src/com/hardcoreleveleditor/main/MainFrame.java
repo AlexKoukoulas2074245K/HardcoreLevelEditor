@@ -10,7 +10,7 @@ public class MainFrame extends JFrame
     public static MainFrame instance = null;
 
     private static final int INIT_WINDOW_WIDTH = 1024;
-    private static final int INIT_WINDOW_HEIGHT = 818;
+    private static final int INIT_WINDOW_HEIGHT = 768;
 
     MainFrame()
     {
@@ -23,10 +23,6 @@ public class MainFrame extends JFrame
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(new MainPanel());
-        setMinimumSize(new Dimension(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT));
-        setLocationRelativeTo(null);
-        setVisible(true);
-
         JMenu fileMenu = new JMenu("File");
 
         JMenuBar menuBar = new JMenuBar();
@@ -35,5 +31,10 @@ public class MainFrame extends JFrame
         setJMenuBar(menuBar);
 
         pack();
+        setMinimumSize(getSize());
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setResizable(false);
+
     }
 }

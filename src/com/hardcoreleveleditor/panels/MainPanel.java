@@ -10,31 +10,34 @@ public class MainPanel extends JPanel
         super(new BorderLayout(10, 10));
 
         JPanel toolsPanel = new JPanel();
-        toolsPanel.setPreferredSize(new Dimension(1024, 50));
+        toolsPanel.setPreferredSize(new Dimension(1024, 32));
         toolsPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         add(toolsPanel, BorderLayout.NORTH);
 
 
         JPanel levelEditorPanel = new JPanel();
-        GridLayout levelEditorGridLayout = new GridLayout(24,28);
+        Dimension gridSize = new Dimension(60, 22);
+        GridLayout levelEditorGridLayout = new GridLayout(gridSize.height, gridSize.width);
         levelEditorPanel.setLayout(levelEditorGridLayout);
-        for (int y = 0; y < 24; ++y)
+        //levelEditorPanel.setPreferredSize(new Dimension(768, 700));
+
+        for (int y = 0; y < gridSize.height; ++y)
         {
-            for (int x = 0; x < 28; ++x)
+            for (int x = 0; x < gridSize.width; ++x)
             {
                 JPanel gridSquarePanel = new JPanel();
-                gridSquarePanel.setBackground(new Color(x * 9, y * 9, x * 9));
+                gridSquarePanel.setBackground(new Color(x * 3, y * 3, x * 3));
                 gridSquarePanel.setPreferredSize(new Dimension(32, 32));
                 levelEditorPanel.add(gridSquarePanel);
             }
         }
 
-        levelEditorPanel.setPreferredSize(new Dimension(896, 768));
-        levelEditorPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        add(levelEditorPanel, BorderLayout.CENTER);
+        JScrollPane scrollPane = new JScrollPane(levelEditorPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setPreferredSize(new Dimension(768, 700));
+        add(scrollPane, BorderLayout.CENTER);
 
         JPanel resourcePanel = new JPanel();
-        resourcePanel.setPreferredSize(new Dimension(128, 768));
+        resourcePanel.setPreferredSize(new Dimension(128, 700));
         resourcePanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         add(resourcePanel, BorderLayout.EAST);
     }
