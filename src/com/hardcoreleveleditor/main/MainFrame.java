@@ -3,15 +3,10 @@ package com.hardcoreleveleditor.main;
 import com.hardcoreleveleditor.panels.MainPanel;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame
 {
     public static MainFrame instance = null;
-
-    private static final int INIT_WINDOW_WIDTH = 1024;
-    private static final int INIT_WINDOW_HEIGHT = 768;
-
     MainFrame()
     {
         super("Hardcore Level Editor");
