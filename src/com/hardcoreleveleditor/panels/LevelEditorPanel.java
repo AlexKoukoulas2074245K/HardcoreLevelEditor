@@ -13,7 +13,7 @@ public class LevelEditorPanel extends JPanel
         {
             for (int x = 0; x < levelEditorCellCols; ++x)
             {
-                add(new GridCellPanel(64, 64));
+                add(new GridCellPanel(64, 64, false));
             }
         }
     }

@@ -3,6 +3,8 @@ package com.hardcoreleveleditor.panels;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -58,7 +60,7 @@ public class ResourcePanel extends JPanel
     {
         for (Image image: resourceImages)
         {
-            GridCellPanel gridCell = new GridCellPanel(64, 64);
+            GridCellPanel gridCell = new GridCellPanel(64, 64, true);
             gridCell.setImage(image);
             add(gridCell);
             resourceCells.add(gridCell);
