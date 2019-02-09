@@ -1,16 +1,23 @@
 package com.hardcoreleveleditor.panels;
 
+import com.hardcoreleveleditor.components.AnimationComponent;
+import com.hardcoreleveleditor.components.IComponent;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GridCellPanel extends JPanel implements MouseListener
 {
-    private static GridCellPanel sSelectedGridCell;
-    private static Image sSelectedCellImage;
+    public static GridCellPanel sSelectedGridCell;
+    public static Image sSelectedCellImage;
+
+    private static boolean sMouseDown;
 
     static
     {
@@ -24,84 +31,134 @@ public class GridCellPanel extends JPanel implements MouseListener
         }
     }
 
+    private final Map<String, IComponent> cellComponents = new HashMap<>();
+    private final int cellCol;
+    private final int cellRow;
+
     private final int cellWidth;
     private final int cellHeight;
 
     private boolean isResourceCell;
-    private Image cellImage;
+    private Image animationIdleImage;
+    private String animationName;
 
-    public GridCellPanel(final int cellWidth, final int cellHeight, final boolean isResourceCell)
+    public GridCellPanel(final int cellCol, final int cellRow, final int cellWidth, final int cellHeight, final boolean isResourceCell)
     {
         super();
 
         addMouseListener(this);
 
+        this.cellCol = cellCol;
+        this.cellRow = cellRow;
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
         this.isResourceCell = isResourceCell;
-        this.cellImage = null;
+        this.animationIdleImage = null;
 
         setPreferredSize(new Dimension(cellWidth, cellHeight));
     }
 
-    public void setImage(final Image image)
+    public Map<String, IComponent> getCellComponents()
     {
-        this.cellImage = image;
+        return cellComponents;
+    }
+
+    public void setAnimationImage(final Image image, final String animationName)
+    {
+        this.animationIdleImage = image;
+        this.animationName = animationName;
+
+        if (!isResourceCell)
+        {
+            if (animationName.endsWith("empty"))
+            {
+                cellComponents.remove("AnimationComponent");
+            }
+            else
+            {
+                cellComponents.put("AnimationComponent", new AnimationComponent(animationName));
+            }
+        }
+    }
+
+    public boolean isResourceCell()
+    {
+        return isResourceCell;
+    }
+
+    public Image getImage()
+    {
+        return this.animationIdleImage;
     }
 
     @Override
-    protected void paintComponent(Graphics g)
+    public void paintComponent(Graphics g)
     {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setColor(Color.WHITE);
-        g2.fillRect(0, 0, cellWidth, cellHeight);
-        g2.setColor(Color.black);
-        g2.drawLine(0, cellHeight - 1, cellWidth - 1, cellHeight - 1);
-        g2.drawLine(cellWidth - 1 , 0, cellWidth - 1, cellHeight - 1);
-
-        if (cellImage != null)
-        {
-            g2.drawImage(cellImage, 0, 0, cellWidth, cellHeight, null);
-        }
-
-        if (this == sSelectedGridCell)
-        {
-            g2.drawImage(sSelectedCellImage, 0, 0, cellWidth, cellHeight, null);
-        }
-
-        g2.dispose();
+        return;
     }
 
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        sSelectedGridCell = this;
-        getRootPane().revalidate();
-        getRootPane().repaint();
+
     }
 
     @Override
     public void mousePressed(MouseEvent e)
     {
+        sMouseDown = true;
+        if (isResourceCell)
+        {
+            onResourceTilePressed();
+        }
+        else if (!isResourceCell)
+        {
+            onLevelEditorTilePressed();
+        }
 
+
+        getRootPane().revalidate();
+        getRootPane().repaint();
     }
 
     @Override
     public void mouseReleased(MouseEvent e)
     {
-
+        sMouseDown = false;
     }
 
     @Override
     public void mouseEntered(MouseEvent e)
     {
+        if (!isResourceCell && sMouseDown)
+        {
+            onLevelEditorTilePressed();
+        }
 
+        getRootPane().revalidate();
+        getRootPane().repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent e)
     {
 
+    }
+
+    private void onLevelEditorTilePressed()
+    {
+        if (sSelectedGridCell != null && sSelectedGridCell.isResourceCell)
+        {
+            setAnimationImage(sSelectedGridCell.animationIdleImage, sSelectedGridCell.animationName);
+        }
+        else
+        {
+            sSelectedGridCell = sSelectedGridCell == this ? null : this;
+        }
+    }
+
+    private void onResourceTilePressed()
+    {
+        sSelectedGridCell = sSelectedGridCell == this ? null : this;
     }
 }
