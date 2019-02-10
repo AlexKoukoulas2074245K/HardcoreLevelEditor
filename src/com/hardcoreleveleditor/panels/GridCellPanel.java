@@ -2,20 +2,24 @@ package com.hardcoreleveleditor.panels;
 
 import com.hardcoreleveleditor.components.AnimationComponent;
 import com.hardcoreleveleditor.components.IComponent;
+import com.hardcoreleveleditor.components.ShaderComponent;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class GridCellPanel extends JPanel implements MouseListener
 {
-    public static GridCellPanel sSelectedGridCell;
-    public static Image sSelectedCellImage;
+    public static GridCellPanel sCopyOrCutGridCell = null;
+    public static GridCellPanel sSelectedGridCell = null;
+    public static Image sSelectedCellImage = null;
 
     private static boolean sMouseDown;
 
@@ -32,9 +36,7 @@ public class GridCellPanel extends JPanel implements MouseListener
     }
 
     private final ComponentsPanel componentsPanel;
-    private final Map<String, IComponent> cellComponents = new HashMap<>();
-    private final int cellCol;
-    private final int cellRow;
+    private final Map<String, IComponent> cellComponents = new TreeMap<>();
 
     private final int cellWidth;
     private final int cellHeight;
@@ -43,21 +45,34 @@ public class GridCellPanel extends JPanel implements MouseListener
     private Image animationIdleImage;
     private String animationName;
 
-    public GridCellPanel(final ComponentsPanel componentsPanel, final int cellCol, final int cellRow, final int cellWidth, final int cellHeight, final boolean isResourceCell)
+    public GridCellPanel(final ComponentsPanel componentsPanel, final int cellWidth, final int cellHeight, final boolean isResourceCell)
     {
         super();
 
         addMouseListener(this);
 
         this.componentsPanel = componentsPanel;
-        this.cellCol = cellCol;
-        this.cellRow = cellRow;
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
         this.isResourceCell = isResourceCell;
-        this.animationIdleImage = null;
+
+        resetDynamicProperties();
 
         setPreferredSize(new Dimension(cellWidth, cellHeight));
+    }
+
+    public GridCellPanel getClone()
+    {
+        GridCellPanel clone = new GridCellPanel(this.componentsPanel, this.cellWidth, this.cellHeight, this.isResourceCell);
+        clone.animationIdleImage = this.animationIdleImage;
+        clone.animationName = this.animationName;
+
+        for (Map.Entry<String, IComponent> entry: cellComponents.entrySet())
+        {
+            clone.getCellComponents().put(entry.getKey(), entry.getValue().getClone());
+        }
+
+        return clone;
     }
 
     public Map<String, IComponent> getCellComponents()
@@ -75,10 +90,12 @@ public class GridCellPanel extends JPanel implements MouseListener
             if (animationName.endsWith("empty"))
             {
                 cellComponents.remove("AnimationComponent");
+                cellComponents.remove("ShaderComponent");
             }
             else
             {
                 cellComponents.put("AnimationComponent", new AnimationComponent(animationName));
+                cellComponents.put("ShaderComponent", new ShaderComponent("basic"));
             }
         }
     }
@@ -93,6 +110,8 @@ public class GridCellPanel extends JPanel implements MouseListener
         return this.animationIdleImage;
     }
 
+    public String getAnimationName() { return this.animationName; }
+
     @Override
     public void paintComponent(Graphics g)
     {
@@ -102,7 +121,21 @@ public class GridCellPanel extends JPanel implements MouseListener
     @Override
     public void mouseClicked(MouseEvent e)
     {
+        if (e.getClickCount() == 2)
+        {
+            if (isResourceCell)
+            {
+                onResourceTilePressed();
+            }
+            else if (!isResourceCell)
+            {
+                sSelectedGridCell = sSelectedGridCell == this ? null : this;
+                componentsPanel.updateComponentsPanel();
+            }
+        }
 
+        getRootPane().revalidate();
+        getRootPane().repaint();
     }
 
     @Override
@@ -147,6 +180,14 @@ public class GridCellPanel extends JPanel implements MouseListener
 
     }
 
+    public void resetDynamicProperties()
+    {
+        this.cellComponents.clear();
+        this.animationIdleImage = null;
+        this.animationName = null;
+        this.animationIdleImage = null;
+    }
+
     private void onLevelEditorTilePressed()
     {
         if (sSelectedGridCell != null && sSelectedGridCell.isResourceCell)
@@ -156,13 +197,13 @@ public class GridCellPanel extends JPanel implements MouseListener
         else
         {
             sSelectedGridCell = sSelectedGridCell == this ? null : this;
-            componentsPanel.onCellPressed(sSelectedGridCell);
+            componentsPanel.updateComponentsPanel();
         }
     }
 
     private void onResourceTilePressed()
     {
         sSelectedGridCell = sSelectedGridCell == this ? null : this;
-        componentsPanel.onCellPressed(sSelectedGridCell);
+        componentsPanel.updateComponentsPanel();
     }
 }

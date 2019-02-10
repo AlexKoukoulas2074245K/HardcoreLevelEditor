@@ -3,18 +3,20 @@ package com.hardcoreleveleditor.components;
 public class AnimationComponent implements IComponent
 {
     private final String animationName;
-    private float animationTimer;
+    private double animationFrameDuration;
 
     public AnimationComponent(final String animationName)
     {
         this.animationName = animationName;
-        this.animationTimer = 100.0f;
+        this.animationFrameDuration = 100.0;
     }
 
     @Override
-    public String getName()
+    public IComponent getClone()
     {
-        return "AnimationComponent";
+        AnimationComponent clone = new AnimationComponent(this.animationName);
+        clone.animationFrameDuration = this.animationFrameDuration;
+        return clone;
     }
 
     public String getAnimationName()
@@ -22,8 +24,10 @@ public class AnimationComponent implements IComponent
         return animationName;
     }
 
-    public float getAnimationTimer()
+    public double getAnimationFrameDuration()
     {
-        return animationTimer;
+        return animationFrameDuration;
     }
+
+    public void setAnimationFrameDuration(double animationFrameDuration) { this.animationFrameDuration = animationFrameDuration; }
 }

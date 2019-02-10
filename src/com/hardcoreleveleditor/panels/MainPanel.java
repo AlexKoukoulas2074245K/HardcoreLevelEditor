@@ -14,6 +14,7 @@ public class MainPanel extends JPanel
 
     private final JFrame mainFrame;
     private final LevelEditorPanel levelEditorPanel;
+    private final ComponentsPanel componentsPanel;
 
     public MainPanel(final JFrame mainFrame, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
     {
@@ -27,7 +28,7 @@ public class MainPanel extends JPanel
         toolsPanel.setPreferredSize(new Dimension(816, 32));
         toolsPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
-        ComponentsPanel componentsPanel = new ComponentsPanel(mainFrame);
+        componentsPanel = new ComponentsPanel(mainFrame);
         JScrollPane componentsScrollPane = new JScrollPane(componentsPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         componentsScrollPane.getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT);
         componentsScrollPane.setPreferredSize(new Dimension(180, 350));
@@ -61,4 +62,5 @@ public class MainPanel extends JPanel
     {
         return levelEditorPanel;
     }
+    public ComponentsPanel getComponentsPanel() { return componentsPanel; }
 }

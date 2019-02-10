@@ -1,20 +1,29 @@
 package com.hardcoreleveleditor.panels;
 
 import com.hardcoreleveleditor.components.AnimationComponent;
+import com.hardcoreleveleditor.components.PhysicsComponent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class LevelEditorPanel extends JPanel
 {
+    public static int sCurrentCellSize = 0;
+
+    private static final Color HITBOX_COLOR = new Color(255, 0,255, 128);
+
     private final ComponentsPanel componentsPanel;
+    private final int cellSize;
     private final List<GridCellPanel> levelGridCells = new ArrayList<>();
     private Map<Image, Rectangle> backgroundAnimations = new HashMap<>();
-    private final int cellSize;
+
 
     public LevelEditorPanel(final ComponentsPanel componentsPanel, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
     {
@@ -22,12 +31,13 @@ public class LevelEditorPanel extends JPanel
 
         this.componentsPanel = componentsPanel;
         this.cellSize = cellSize;
+        LevelEditorPanel.sCurrentCellSize = cellSize;
 
         for (int y = 0; y < levelEditorCellRows; ++y)
         {
             for (int x = 0; x < levelEditorCellCols; ++x)
             {
-                GridCellPanel gridCellPanel = new GridCellPanel(componentsPanel, x, y, cellSize, cellSize, false);
+                GridCellPanel gridCellPanel = new GridCellPanel(componentsPanel, cellSize, cellSize, false);
                 levelGridCells.add(gridCellPanel);
                 add(gridCellPanel);
             }
@@ -50,7 +60,8 @@ public class LevelEditorPanel extends JPanel
 
         if (backgroundAnimations.size() > 0)
         {
-            for (Map.Entry<Image, Rectangle> backgroundEntry : backgroundAnimations.entrySet()) {
+            for (Map.Entry<Image, Rectangle> backgroundEntry : backgroundAnimations.entrySet())
+            {
                 Image image = backgroundEntry.getKey();
                 Rectangle rect = backgroundEntry.getValue();
                 g2.drawImage(image, rect.x, rect.y, rect.width, rect.height, null);
@@ -66,6 +77,15 @@ public class LevelEditorPanel extends JPanel
             if (gridCellPanel.getImage() != null)
             {
                 g2.drawImage(gridCellPanel.getImage(), gridCellPanel.getX(), gridCellPanel.getY(), cellSize, cellSize, null);
+            }
+
+            if (gridCellPanel.getCellComponents().containsKey("PhysicsComponent"))
+            {
+                PhysicsComponent physicsComponent = (PhysicsComponent)gridCellPanel.getCellComponents().get("PhysicsComponent");
+                g2.setColor(HITBOX_COLOR);
+                g2.fillRect((int)(gridCellPanel.getX() + LevelEditorPanel.sCurrentCellSize/2 + physicsComponent.hitBoxCenterPoint.getX() - physicsComponent.hitBoxDimensions.getX()/2),
+                            (int)(gridCellPanel.getY() + LevelEditorPanel.sCurrentCellSize/2 - physicsComponent.hitBoxCenterPoint.getY() - physicsComponent.hitBoxDimensions.getY()/2),
+                            (int)(physicsComponent.hitBoxDimensions.getX()), (int)(physicsComponent.hitBoxDimensions.getY()));
             }
 
             if (gridCellPanel == GridCellPanel.sSelectedGridCell)

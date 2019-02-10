@@ -1,6 +1,7 @@
 package com.hardcoreleveleditor.handlers;
 
 import com.hardcoreleveleditor.main.MainFrame;
+import com.hardcoreleveleditor.panels.LabelledInputPanel;
 import com.hardcoreleveleditor.panels.MainPanel;
 
 import javax.swing.*;
@@ -31,11 +32,8 @@ public class NewMenuItemActionHandler implements ActionListener
         dimensionsFormatter.setMinimum(1);
         dimensionsFormatter.setCommitsOnValidEdit(false);
 
-        JFormattedTextField colsField = new JFormattedTextField(dimensionsFormatter);
-        JPanel levelColsPanel = createLevelSpecInputPanel(colsField,"Columns: ", 20, dimensionsFormatter);
-
-        JFormattedTextField rowsField = new JFormattedTextField(dimensionsFormatter);
-        JPanel levelRowsPanel = createLevelSpecInputPanel(rowsField, "Rows: ", 20, dimensionsFormatter);
+        LabelledInputPanel levelColsPanel = new LabelledInputPanel("Columns: ", dimensionsFormatter, 2, 20);
+        LabelledInputPanel levelRowsPanel = new LabelledInputPanel("Rows: ", dimensionsFormatter, 2, 20);
 
         JPanel newLevelDimensionsPanel = new JPanel();
         newLevelDimensionsPanel.setLayout(new BoxLayout(newLevelDimensionsPanel, BoxLayout.X_AXIS));
@@ -43,8 +41,7 @@ public class NewMenuItemActionHandler implements ActionListener
         newLevelDimensionsPanel.add(new JLabel("x"));
         newLevelDimensionsPanel.add(levelRowsPanel);
 
-        JFormattedTextField cellSizeField = new JFormattedTextField(dimensionsFormatter);
-        JPanel newLevelCellSizePanel = createLevelSpecInputPanel(cellSizeField, "Cell Size: ", 32, dimensionsFormatter);
+        LabelledInputPanel newLevelCellSizePanel = new LabelledInputPanel("Cell Size: ", dimensionsFormatter, 3, 80);
 
         JPanel newLevelSpecsPanel = new JPanel();
         newLevelSpecsPanel.setLayout(new BoxLayout(newLevelSpecsPanel, BoxLayout.Y_AXIS));
@@ -57,7 +54,7 @@ public class NewMenuItemActionHandler implements ActionListener
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                mainFrame.resetContentPane(new MainPanel(mainFrame, (int)rowsField.getValue(), (int)colsField.getValue(), (int)cellSizeField.getValue()));
+                mainFrame.resetContentPane(new MainPanel(mainFrame, (int)levelRowsPanel.getTextField().getValue(), (int)levelColsPanel.getTextField().getValue(), (int)newLevelCellSizePanel.getTextField().getValue()));
                 jDialog.dispose();
                 mainFrame.getRootPane().revalidate();
                 mainFrame.getRootPane().repaint();
@@ -84,19 +81,5 @@ public class NewMenuItemActionHandler implements ActionListener
         jDialog.setResizable(false);
         jDialog.setLocationRelativeTo(mainFrame);
         jDialog.setVisible(true);
-    }
-
-    private JPanel createLevelSpecInputPanel(final JFormattedTextField inputField, final String inputPanelDescription, final int defaultValue, final NumberFormatter inputFormatter)
-    {
-        JLabel levelSpecInputLabel = new JLabel(inputPanelDescription);
-        inputField.setValue(defaultValue);
-        inputField.setColumns(3);
-        inputField.addFocusListener(new SelectAllFocusListener(inputField));
-
-        JPanel levelSpecPanel = new JPanel();
-        levelSpecPanel.add(levelSpecInputLabel);
-        levelSpecPanel.add(inputField);
-
-        return levelSpecPanel;
     }
 }

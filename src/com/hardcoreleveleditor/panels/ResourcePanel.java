@@ -103,14 +103,14 @@ public class ResourcePanel extends JPanel
 
     private void fillResourceCellsWithResourceImages()
     {
-        GridCellPanel emptyGridCell = new GridCellPanel(componentsPanel, 0,0, 64, 64, true);
+        GridCellPanel emptyGridCell = new GridCellPanel(componentsPanel, 64, 64, true);
         emptyGridCell.setAnimationImage(emptyImage, "environments/empty");
         add(emptyGridCell);
         resourceCells.add(emptyGridCell);
 
         for (Map.Entry<Image, String> imagePathEntry: resourceImagesToAbsolutePaths.entrySet())
         {
-            GridCellPanel gridCell = new GridCellPanel(componentsPanel, 0, 0, 64, 64, true);
+            GridCellPanel gridCell = new GridCellPanel(componentsPanel, 64, 64, true);
             gridCell.setAnimationImage(imagePathEntry.getKey(), imagePathEntry.getValue());
             add(gridCell);
             resourceCells.add(gridCell);

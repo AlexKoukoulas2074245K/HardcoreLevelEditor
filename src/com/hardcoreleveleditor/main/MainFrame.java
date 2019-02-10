@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 public class MainFrame extends JFrame
 {
     private MainPanel mainPanel;
+    private static final int MENU_MODIFIER_KEY = System.getProperty("os.name").toLowerCase().startsWith("Win") ? ActionEvent.CTRL_MASK : ActionEvent.META_MASK;
 
     public MainFrame()
     {
@@ -19,8 +20,8 @@ public class MainFrame extends JFrame
         catch (Exception e) { e.printStackTrace(); }
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        resetContentPane(new MainPanel(this, 20, 20, 64));
-        setMenuItems();
+        resetContentPane(new MainPanel(this, 20, 20, 80));
+        createMenus();
         pack();
         setMinimumSize(getSize());
         setLocationRelativeTo(null);
@@ -35,13 +36,13 @@ public class MainFrame extends JFrame
         setContentPane(mainPanel);
     }
 
-    private void setMenuItems()
+    private void createMenus()
     {
         JMenuBar menuBar = new JMenuBar();
-
         menuBar.add(createFileMenu());
+        menuBar.add(createEditMenu());
         menuBar.add(createBackgroundMenu());
-
+        menuBar.add(createComponentsMenu());
         setJMenuBar(menuBar);
     }
 
@@ -52,13 +53,13 @@ public class MainFrame extends JFrame
         JMenuItem saveMenuItem = new JMenuItem("Save As..");
         JMenuItem exitMenuItem = new JMenuItem("Exit");
 
-        newMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+        newMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, MENU_MODIFIER_KEY));
         newMenuItem.addActionListener(new NewMenuItemActionHandler(this));
 
-        saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+        saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, MENU_MODIFIER_KEY));
         saveMenuItem.addActionListener(new SaveAsMenuItemActionHandler());
 
-        exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
+        exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, MENU_MODIFIER_KEY));
         exitMenuItem.addActionListener(new ExitMenuItemActionHandler(this));
 
         fileMenu.add(newMenuItem);
@@ -68,12 +69,36 @@ public class MainFrame extends JFrame
         return fileMenu;
     }
 
+    private JMenu createEditMenu()
+    {
+        JMenu editMenu = new JMenu("Edit");
+
+        JMenuItem cutMenuItem = new JMenuItem("Cut");
+        JMenuItem copyMenuItem = new JMenuItem("Copy");
+        JMenuItem pasteMenuItem = new JMenuItem("Paste");
+
+        cutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, MENU_MODIFIER_KEY));
+        cutMenuItem.addActionListener(new CutMenuItemActionHandler(this));
+
+        copyMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, MENU_MODIFIER_KEY));
+        copyMenuItem.addActionListener(new CopyMenuItemActionHandler());
+
+        pasteMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, MENU_MODIFIER_KEY));
+        pasteMenuItem.addActionListener(new PasteMenuItemActionHandler(this));
+
+        editMenu.add(cutMenuItem);
+        editMenu.add(copyMenuItem);
+        editMenu.add(pasteMenuItem);
+
+        return editMenu;
+    }
+
     private JMenu createBackgroundMenu()
     {
         JMenu backgroundMenu = new JMenu("Background");
         JMenuItem setBackgroundMenuItem = new JMenuItem("Set Selected Resource as Background");
 
-        setBackgroundMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
+        setBackgroundMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, MENU_MODIFIER_KEY));
         setBackgroundMenuItem.addActionListener(new SetBackgroundMenuItemActionHandler(mainPanel));
 
         backgroundMenu.add(setBackgroundMenuItem);
@@ -81,4 +106,15 @@ public class MainFrame extends JFrame
         return backgroundMenu;
     }
 
+    private JMenu createComponentsMenu()
+    {
+        JMenu componentsMenu = new JMenu("Components");
+
+        JMenuItem addPhysicsComponentMenuItem  = new JMenuItem("Add Physics Component..");
+        addPhysicsComponentMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, MENU_MODIFIER_KEY));
+        addPhysicsComponentMenuItem.addActionListener(new AddPhysicsComponentMenuItemActionHandler(this, mainPanel.getComponentsPanel()));
+        componentsMenu.add(addPhysicsComponentMenuItem);
+
+        return componentsMenu;
+    }
 }

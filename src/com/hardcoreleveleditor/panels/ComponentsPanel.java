@@ -2,6 +2,8 @@ package com.hardcoreleveleditor.panels;
 
 import com.hardcoreleveleditor.components.IComponent;
 import com.hardcoreleveleditor.dialogs.EditAnimationComponentDialog;
+import com.hardcoreleveleditor.dialogs.EditPhysicsComponentDialog;
+import com.hardcoreleveleditor.dialogs.EditShaderComponentDialog;
 import com.sun.tools.corba.se.idl.constExpr.BooleanOr;
 
 import javax.swing.*;
@@ -11,13 +13,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.ByteOrder;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ComponentsPanel extends JPanel
 {
     private static final int COMPONENT_HEIGHT = 60;
 
     private final JFrame mainFrame;
+    private final Map<String, Component> componentNamesToGUIComponents = new TreeMap<>();
 
     public ComponentsPanel(final JFrame mainFrame)
     {
@@ -37,13 +42,14 @@ public class ComponentsPanel extends JPanel
         g2.dispose();
     }
 
-    public void onCellPressed(final GridCellPanel cell)
+    public void updateComponentsPanel()
     {
         removeAll();
+        componentNamesToGUIComponents.clear();
 
-        if (cell != null && cell.isResourceCell() == false)
+        if (GridCellPanel.sSelectedGridCell != null && GridCellPanel.sSelectedGridCell.isResourceCell() == false)
         {
-            Map<String, IComponent> cellComponents = cell.getCellComponents();
+            Map<String, IComponent> cellComponents = GridCellPanel.sSelectedGridCell.getCellComponents();
             for (Map.Entry<String, IComponent> entry: cellComponents.entrySet())
             {
                 JPanel componentPanel = new JPanel(new BorderLayout());
@@ -59,7 +65,13 @@ public class ComponentsPanel extends JPanel
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        new EditAnimationComponentDialog(mainFrame, entry.getValue());
+                        switch (entry.getKey())
+                        {
+                            case "AnimationComponent": new EditAnimationComponentDialog(mainFrame, entry.getValue()); break;
+                            case "PhysicsComponent": new EditPhysicsComponentDialog(mainFrame, entry.getValue()); break;
+                            case "ShaderComponent": new EditShaderComponentDialog(mainFrame, entry.getValue()); break;
+                        }
+
                     }
                 });
 
@@ -69,10 +81,27 @@ public class ComponentsPanel extends JPanel
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        cell.setAnimationImage(null, "");
-                        cellComponents.remove(entry.getKey());
+                        if (entry.getKey().equals("AnimationComponent") || entry.getKey().equals("ShaderComponent"))
+                        {
+                            GridCellPanel.sSelectedGridCell.setAnimationImage(null, "");
+                            if (entry.getKey().equals("AnimationComponent"))
+                            {
+                                cellComponents.remove("ShaderComponent");
+                                remove(componentNamesToGUIComponents.get("ShaderComponent"));
+                                componentNamesToGUIComponents.remove("ShaderComponent");
+                            }
+                            else
+                            {
+                                cellComponents.remove("AnimationComponent");
+                                remove(componentNamesToGUIComponents.get("AnimationComponent"));
+                                componentNamesToGUIComponents.remove("AnimationComponent");
+                            }
+                        }
 
+                        cellComponents.remove(entry.getKey());
                         remove(componentPanel);
+                        componentNamesToGUIComponents.remove(entry.getKey());
+
                         getRootPane().revalidate();
                         getRootPane().repaint();
                     }
@@ -92,6 +121,7 @@ public class ComponentsPanel extends JPanel
                 componentPanel.add(componentButtonsPanel, BorderLayout.SOUTH);
 
                 add(componentPanel);
+                componentNamesToGUIComponents.put(entry.getKey(), componentPanel);
             }
         }
     }
