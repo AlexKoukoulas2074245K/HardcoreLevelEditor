@@ -17,15 +17,18 @@ public class ResourcePanel extends JPanel
     private static final String ACTUAL_RESOURCE_PATH_TO_BE_INPUT = "/Users/alex/Desktop/Code/Hardcore2D/res/";
     private static final String TOP_LEVEL_RESOURCES_DIRECTORY_NAME = "res";
     private static final String BOTTOM_LEVEL_ANIMATION_DIRECTORY_NAME = "idle";
-    private static final int RESOURCE_GRID_CELL_SIZE = 64;
+    private static final int RESOURCE_GRID_CELL_SIZE = 80;
 
+    private final ComponentsPanel componentsPanel;
     private final Map<Image, String> resourceImagesToAbsolutePaths = new HashMap<>();
     private final List<GridCellPanel> resourceCells = new ArrayList<>();
     private Image emptyImage = null;
 
-    public ResourcePanel()
+    public ResourcePanel(final ComponentsPanel componentsPanel)
     {
         super(new GridLayout(0, 2));
+        this.componentsPanel = componentsPanel;
+
         loadResources();
         fillResourceCellsWithResourceImages();
     }
@@ -100,14 +103,14 @@ public class ResourcePanel extends JPanel
 
     private void fillResourceCellsWithResourceImages()
     {
-        GridCellPanel emptyGridCell = new GridCellPanel(0,0, 64, 64, true);
+        GridCellPanel emptyGridCell = new GridCellPanel(componentsPanel, 0,0, 64, 64, true);
         emptyGridCell.setAnimationImage(emptyImage, "environments/empty");
         add(emptyGridCell);
         resourceCells.add(emptyGridCell);
 
         for (Map.Entry<Image, String> imagePathEntry: resourceImagesToAbsolutePaths.entrySet())
         {
-            GridCellPanel gridCell = new GridCellPanel(0, 0, 64, 64, true);
+            GridCellPanel gridCell = new GridCellPanel(componentsPanel, 0, 0, 64, 64, true);
             gridCell.setAnimationImage(imagePathEntry.getKey(), imagePathEntry.getValue());
             add(gridCell);
             resourceCells.add(gridCell);

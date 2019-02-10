@@ -57,7 +57,7 @@ public class NewMenuItemActionHandler implements ActionListener
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                mainFrame.resetContentPane(new MainPanel((int)rowsField.getValue(), (int)colsField.getValue(), (int)cellSizeField.getValue()));
+                mainFrame.resetContentPane(new MainPanel(mainFrame, (int)rowsField.getValue(), (int)colsField.getValue(), (int)cellSizeField.getValue()));
                 jDialog.dispose();
                 mainFrame.getRootPane().revalidate();
                 mainFrame.getRootPane().repaint();
@@ -84,7 +84,6 @@ public class NewMenuItemActionHandler implements ActionListener
         jDialog.setResizable(false);
         jDialog.setLocationRelativeTo(mainFrame);
         jDialog.setVisible(true);
-        jDialog.getRootPane().setDefaultButton(createButton);
     }
 
     private JPanel createLevelSpecInputPanel(final JFormattedTextField inputField, final String inputPanelDescription, final int defaultValue, final NumberFormatter inputFormatter)

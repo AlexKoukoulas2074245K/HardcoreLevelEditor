@@ -11,6 +11,12 @@ public class AnimationComponent implements IComponent
         this.animationTimer = 100.0f;
     }
 
+    @Override
+    public String getName()
+    {
+        return "AnimationComponent";
+    }
+
     public String getAnimationName()
     {
         return animationName;

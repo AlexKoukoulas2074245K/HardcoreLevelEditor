@@ -19,7 +19,7 @@ public class MainFrame extends JFrame
         catch (Exception e) { e.printStackTrace(); }
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        resetContentPane(new MainPanel(20, 20, 64));
+        resetContentPane(new MainPanel(this, 20, 20, 64));
         setMenuItems();
         pack();
         setMinimumSize(getSize());

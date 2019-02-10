@@ -31,6 +31,7 @@ public class GridCellPanel extends JPanel implements MouseListener
         }
     }
 
+    private final ComponentsPanel componentsPanel;
     private final Map<String, IComponent> cellComponents = new HashMap<>();
     private final int cellCol;
     private final int cellRow;
@@ -42,12 +43,13 @@ public class GridCellPanel extends JPanel implements MouseListener
     private Image animationIdleImage;
     private String animationName;
 
-    public GridCellPanel(final int cellCol, final int cellRow, final int cellWidth, final int cellHeight, final boolean isResourceCell)
+    public GridCellPanel(final ComponentsPanel componentsPanel, final int cellCol, final int cellRow, final int cellWidth, final int cellHeight, final boolean isResourceCell)
     {
         super();
 
         addMouseListener(this);
 
+        this.componentsPanel = componentsPanel;
         this.cellCol = cellCol;
         this.cellRow = cellRow;
         this.cellWidth = cellWidth;
@@ -154,11 +156,13 @@ public class GridCellPanel extends JPanel implements MouseListener
         else
         {
             sSelectedGridCell = sSelectedGridCell == this ? null : this;
+            componentsPanel.onCellPressed(sSelectedGridCell);
         }
     }
 
     private void onResourceTilePressed()
     {
         sSelectedGridCell = sSelectedGridCell == this ? null : this;
+        componentsPanel.onCellPressed(sSelectedGridCell);
     }
 }

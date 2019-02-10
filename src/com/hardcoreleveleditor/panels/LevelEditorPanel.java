@@ -11,21 +11,23 @@ import java.util.Map;
 
 public class LevelEditorPanel extends JPanel
 {
+    private final ComponentsPanel componentsPanel;
     private final List<GridCellPanel> levelGridCells = new ArrayList<>();
     private Map<Image, Rectangle> backgroundAnimations = new HashMap<>();
     private final int cellSize;
 
-    public LevelEditorPanel(final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
+    public LevelEditorPanel(final ComponentsPanel componentsPanel, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
     {
         super(new GridLayout(levelEditorCellRows, levelEditorCellCols));
 
+        this.componentsPanel = componentsPanel;
         this.cellSize = cellSize;
 
         for (int y = 0; y < levelEditorCellRows; ++y)
         {
             for (int x = 0; x < levelEditorCellCols; ++x)
             {
-                GridCellPanel gridCellPanel = new GridCellPanel(x, y, cellSize, cellSize, false);
+                GridCellPanel gridCellPanel = new GridCellPanel(componentsPanel, x, y, cellSize, cellSize, false);
                 levelGridCells.add(gridCellPanel);
                 add(gridCellPanel);
             }
