@@ -1,5 +1,7 @@
 package com.hardcoreleveleditor.handlers;
 
+import com.hardcoreleveleditor.panels.GridCellPanel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +18,11 @@ public class CutMenuItemActionHandler implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        if (GridCellPanel.sSelectedGridCell != null && GridCellPanel.sSelectedGridCell.isResourceCell() == false)
+        {
+            GridCellPanel.sCopyOrCutGridCell = GridCellPanel.sSelectedGridCell;
+        }
+
         mainFrame.revalidate();
         mainFrame.repaint();
     }
