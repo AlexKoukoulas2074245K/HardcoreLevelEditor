@@ -10,11 +10,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class ResourcePanel extends JPanel
 {
-    private static final String RESOURCE_PATH = "/Users/alex/Desktop/Code/Hardcore2D/res/environments/";
-    private static final String ACTUAL_RESOURCE_PATH_TO_BE_INPUT = "/Users/alex/Desktop/Code/Hardcore2D/res/";
+    private static final String RESOURCE_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/environments/" : "/Users/alex/Desktop/Code/Hardcore2D/res/environments/";
+    private static final String ACTUAL_RESOURCE_PATH_TO_BE_INPUT = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/" : "/Users/alex/Desktop/Code/Hardcore2D/res/";
     private static final String TOP_LEVEL_RESOURCES_DIRECTORY_NAME = "res";
     private static final String BOTTOM_LEVEL_ANIMATION_DIRECTORY_NAME = "idle";
     private static final int RESOURCE_GRID_CELL_SIZE = 80;
@@ -120,7 +121,8 @@ public class ResourcePanel extends JPanel
     private String getAnimationNameFromFilePath(final String filePath)
     {
         StringBuilder animationNameBuilder = new StringBuilder();
-        String[] filePathComponents = filePath.split(File.separator);
+        String pattern = Pattern.quote(System.getProperty("file.separator"));
+        String[] filePathComponents = filePath.split(pattern);
 
         boolean recordingAnimationName = false;
 

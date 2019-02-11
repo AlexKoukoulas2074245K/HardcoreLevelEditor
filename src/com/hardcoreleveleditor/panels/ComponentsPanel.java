@@ -4,7 +4,6 @@ import com.hardcoreleveleditor.components.IComponent;
 import com.hardcoreleveleditor.dialogs.EditAnimationComponentDialog;
 import com.hardcoreleveleditor.dialogs.EditPhysicsComponentDialog;
 import com.hardcoreleveleditor.dialogs.EditShaderComponentDialog;
-import com.sun.tools.corba.se.idl.constExpr.BooleanOr;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,8 +11,6 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.ByteOrder;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -108,7 +105,6 @@ public class ComponentsPanel extends JPanel
                 });
 
                 JPanel componentButtonsPanel = new JPanel();
-                componentButtonsPanel.setLayout(new BoxLayout(componentButtonsPanel, BoxLayout.X_AXIS));
                 componentButtonsPanel.add(editButton);
                 componentButtonsPanel.add(deleteButton);
 

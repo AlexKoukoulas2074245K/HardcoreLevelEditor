@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 public class MainFrame extends JFrame
 {
     private MainPanel mainPanel;
-    private static final int MENU_MODIFIER_KEY = System.getProperty("os.name").toLowerCase().startsWith("Win") ? ActionEvent.CTRL_MASK : ActionEvent.META_MASK;
+    private static final int MENU_MODIFIER_KEY = System.getProperty("os.name").indexOf("Win") >= 0 ? ActionEvent.CTRL_MASK : ActionEvent.META_MASK;
 
     public MainFrame()
     {
