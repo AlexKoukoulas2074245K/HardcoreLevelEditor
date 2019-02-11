@@ -1,7 +1,9 @@
 package com.hardcoreleveleditor.panels;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -22,12 +24,6 @@ public class MainPanel extends JPanel
 
         this.mainFrame = mainFrame;
 
-        JPanel toolsPanel = new JPanel(new GridLayout(1, 4));
-        toolsPanel.add(new JButton("Test Button 1"));
-        toolsPanel.add(new JButton("Test Button 123"));
-        toolsPanel.setPreferredSize(new Dimension(816, 32));
-        toolsPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-
         componentsPanel = new ComponentsPanel(mainFrame);
         JScrollPane componentsScrollPane = new JScrollPane(componentsPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         componentsScrollPane.getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT);
@@ -47,8 +43,7 @@ public class MainPanel extends JPanel
         levelEditorScrollPane.getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT);
         levelEditorScrollPane.getHorizontalScrollBar().setUnitIncrement(SCROLL_UNIT);
         levelEditorScrollPane.setPreferredSize(new Dimension(768, 700));
-
-        add(toolsPanel, BorderLayout.NORTH);
+        
         add(resourceAndComponentPanel, BorderLayout.EAST);
         add(levelEditorScrollPane, BorderLayout.CENTER);
     }
