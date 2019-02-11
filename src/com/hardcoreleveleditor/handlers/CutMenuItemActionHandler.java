@@ -20,7 +20,8 @@ public class CutMenuItemActionHandler implements ActionListener
     {
         if (GridCellPanel.sSelectedGridCell != null && GridCellPanel.sSelectedGridCell.isResourceCell() == false)
         {
-            GridCellPanel.sCopyOrCutGridCell = GridCellPanel.sSelectedGridCell;
+            GridCellPanel.sCopyOrCutGridCell = GridCellPanel.sSelectedGridCell.getClone();
+            GridCellPanel.sSelectedGridCell.resetDynamicProperties();
         }
 
         mainFrame.revalidate();
