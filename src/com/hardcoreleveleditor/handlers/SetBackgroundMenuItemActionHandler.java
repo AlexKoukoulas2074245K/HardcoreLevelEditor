@@ -26,8 +26,7 @@ public class SetBackgroundMenuItemActionHandler implements ActionListener
         {
             if (GridCellPanel.sSelectedGridCell.isResourceCell())
             {
-                LevelEditorPanel levelEditorPanel = mainPanel.getLevelEditorPanel();
-                mainPanel.getLevelEditorPanel().addBackgroundAnimation(GridCellPanel.sSelectedGridCell.getImage(), new Rectangle(0, 0, levelEditorPanel.getSize().width, levelEditorPanel.getSize().height));
+                mainPanel.getLevelEditorPanel().addBackgroundAnimation(GridCellPanel.sSelectedGridCell.getImage(), GridCellPanel.sSelectedGridCell.getAnimationName());
                 mainPanel.getRootPane().revalidate();
                 mainPanel.getRootPane().repaint();
             }

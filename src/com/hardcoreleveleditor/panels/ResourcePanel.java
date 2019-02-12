@@ -94,7 +94,7 @@ public class ResourcePanel extends JPanel
         {
             return;
         }
-        
+
         if (filePathString.endsWith("0.png"))
         {
             try

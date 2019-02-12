@@ -2,6 +2,7 @@ package com.hardcoreleveleditor.panels;
 
 import com.hardcoreleveleditor.components.AnimationComponent;
 import com.hardcoreleveleditor.components.IComponent;
+import com.hardcoreleveleditor.components.PhysicsComponent;
 import com.hardcoreleveleditor.components.ShaderComponent;
 import com.hardcoreleveleditor.util.JSONUtils;
 import javafx.geometry.Point3D;
@@ -98,11 +99,13 @@ public class GridCellPanel extends JPanel implements MouseListener
             {
                 cellComponents.remove("AnimationComponent");
                 cellComponents.remove("ShaderComponent");
+                cellComponents.remove("PhysicsComponent");
             }
             else
             {
                 cellComponents.put("AnimationComponent", new AnimationComponent(animationName));
                 cellComponents.put("ShaderComponent", new ShaderComponent("basic"));
+                cellComponents.put("PhysicsComponent", new PhysicsComponent());
             }
         }
     }

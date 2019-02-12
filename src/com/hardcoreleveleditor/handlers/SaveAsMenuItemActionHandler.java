@@ -77,6 +77,28 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             sb.append("\t\"entities\": "); sb.append('\n');
             sb.append("\t["); sb.append('\n');
 
+            if (levelEditorPanel.getBackgroundCell() != null)
+            {
+                sb.append("\t\t{"); sb.append('\n');
+
+                sb.append("\t\t\t\"name\": \"background\","); sb.append('\n');
+                sb.append("\t\t\t\"components\":"); sb.append('\n');
+                sb.append("\t\t\t{"); sb.append('\n');
+
+                for (Map.Entry<String, IComponent> entry: levelEditorPanel.getBackgroundCell().getCellComponents().entrySet())
+                {
+                    sb.append("\t\t\t\t");
+                    sb.append(entry.getValue().toJSONString());
+                    sb.append(",\n");
+                }
+
+                sb.append("\t\t\t\t");
+                sb.append("\"TransformComponent\": { \"translation\": [0.0, 0.0, 0.0], \"rotation\": [0.0, 0.0, 0.0], \"scale\": [2.0, 2.0, 2.0] }");
+                sb.append('\n');
+                sb.append("\t\t\t}"); sb.append('\n');
+                sb.append("\t\t},"); sb.append('\n');
+            }
+
             for (int i = 0; i < levelEditorPanel.getAllLevelGridCells().size(); ++i)
             {
                 GridCellPanel cell = levelEditorPanel.getAllLevelGridCells().get(i);

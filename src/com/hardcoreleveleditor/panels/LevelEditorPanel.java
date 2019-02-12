@@ -2,6 +2,7 @@ package com.hardcoreleveleditor.panels;
 
 import com.hardcoreleveleditor.components.AnimationComponent;
 import com.hardcoreleveleditor.components.PhysicsComponent;
+import com.hardcoreleveleditor.components.ShaderComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +25,7 @@ public class LevelEditorPanel extends JPanel
     private final int cellRows;
     private final int cellCols;
     private final List<GridCellPanel> levelGridCells = new ArrayList<>();
-    private Map<Image, Rectangle> backgroundAnimations = new HashMap<>();
+    private GridCellPanel backgroundInvisibleCell = null;
 
 
     public LevelEditorPanel(final ComponentsPanel componentsPanel, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
@@ -50,9 +51,18 @@ public class LevelEditorPanel extends JPanel
         }
     }
 
-    public void addBackgroundAnimation(final Image image, final Rectangle backgroundRectangle)
+    public void addBackgroundAnimation(final Image image, final String animationName)
     {
-        backgroundAnimations.put(image, backgroundRectangle);
+        backgroundInvisibleCell = new GridCellPanel(componentsPanel, 2, 2, false);
+        backgroundInvisibleCell.setAnimationImage(image, animationName);
+        backgroundInvisibleCell.getCellComponents().remove("PhysicsComponent");
+        backgroundInvisibleCell.getCellComponents().put("ShaderComponent", new ShaderComponent("background"));
+        backgroundInvisibleCell.setCoords(0, 0, cellRows);
+    }
+
+    public GridCellPanel getBackgroundCell()
+    {
+        return backgroundInvisibleCell;
     }
 
     public int getCellRowCount()
@@ -79,14 +89,10 @@ public class LevelEditorPanel extends JPanel
         g2.setColor(Color.white);
         g2.fillRect(0, 0, getSize().width, getSize().height);
 
-        if (backgroundAnimations.size() > 0)
+        if (backgroundInvisibleCell != null)
         {
-            for (Map.Entry<Image, Rectangle> backgroundEntry : backgroundAnimations.entrySet())
-            {
-                Image image = backgroundEntry.getKey();
-                Rectangle rect = backgroundEntry.getValue();
-                g2.drawImage(image, rect.x, rect.y, rect.width, rect.height, null);
-            }
+            Image image = backgroundInvisibleCell.getImage();
+            g2.drawImage(image, 0, 0, getWidth(), getHeight(), null);
         }
 
         for (GridCellPanel gridCellPanel: levelGridCells)
