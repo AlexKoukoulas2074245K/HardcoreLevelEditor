@@ -3,10 +3,8 @@ package com.hardcoreleveleditor.handlers;
 import com.hardcoreleveleditor.components.PhysicsComponent;
 import com.hardcoreleveleditor.panels.ComponentsPanel;
 import com.hardcoreleveleditor.panels.GridCellPanel;
-import com.hardcoreleveleditor.panels.LevelEditorPanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,12 +33,12 @@ public class AddPhysicsComponentMenuItemActionHandler implements ActionListener
             }
             else
             {
-                JOptionPane.showMessageDialog(mainFrame, "No level editor cell has been selected!", "Set background error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainFrame, "No level editor cell has been selected!", "Add physics component error", JOptionPane.ERROR_MESSAGE);
             }
         }
         else
         {
-            JOptionPane.showMessageDialog(mainFrame, "No cells has been selected!", "Set background error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(mainFrame, "No cells has been selected!", "Add physics component error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

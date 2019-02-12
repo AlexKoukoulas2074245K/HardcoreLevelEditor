@@ -113,7 +113,13 @@ public class MainFrame extends JFrame
         JMenuItem addPhysicsComponentMenuItem  = new JMenuItem("Add Physics Component..");
         addPhysicsComponentMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, MENU_MODIFIER_KEY));
         addPhysicsComponentMenuItem.addActionListener(new AddPhysicsComponentMenuItemActionHandler(this, mainPanel.getComponentsPanel()));
+
+        JMenuItem addAIComponentMenuItem = new JMenuItem("Add AI Component..");
+        addAIComponentMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, MENU_MODIFIER_KEY));
+        addAIComponentMenuItem.addActionListener(new AddAIComponentMenuItemActionHandler(this, mainPanel.getComponentsPanel()));
+
         componentsMenu.add(addPhysicsComponentMenuItem);
+        componentsMenu.add(addAIComponentMenuItem);
 
         return componentsMenu;
     }
