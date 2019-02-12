@@ -16,6 +16,12 @@ public class AIComponent implements IComponent
         return clone;
     }
 
+    @Override
+    public String toJSONString()
+    {
+        return "\"" + aiComponentClassName + "\": {}";
+    }
+
     public String getAIComponentClassName()
     {
         return aiComponentClassName;

@@ -1,6 +1,7 @@
 package com.hardcoreleveleditor.components;
 
 import com.hardcoreleveleditor.panels.LevelEditorPanel;
+import com.hardcoreleveleditor.util.JSONUtils;
 import javafx.geometry.Point2D;
 import javafx.geometry.Point3D;
 
@@ -41,4 +42,9 @@ public class PhysicsComponent implements IComponent
         return clone;
     }
 
+    @Override
+    public String toJSONString()
+    {
+        return "\"PhysicsComponent\": { \"bodyType\": \"" + this.bodyType.toString() + "\", \"hitBox\": { \"centerPoint\": " + JSONUtils.toJSONString(hitBoxCenterPoint) + ", \"dimensions\": " + JSONUtils.toJSONString(hitBoxDimensions) + " }, \"gravity\": " + JSONUtils.toJSONString(gravity) + ", \"maxVelocity\": " + JSONUtils.toJSONString(maxVelocity) + ", \"minVelocity\": " + JSONUtils.toJSONString(minVelocity) + " }";
+    }
 }

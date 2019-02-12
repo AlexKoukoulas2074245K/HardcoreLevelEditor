@@ -57,7 +57,7 @@ public class MainFrame extends JFrame
         newMenuItem.addActionListener(new NewMenuItemActionHandler(this));
 
         saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, MENU_MODIFIER_KEY));
-        saveMenuItem.addActionListener(new SaveAsMenuItemActionHandler());
+        saveMenuItem.addActionListener(new SaveAsMenuItemActionHandler(this, mainPanel.getLevelEditorPanel()));
 
         exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, MENU_MODIFIER_KEY));
         exitMenuItem.addActionListener(new ExitMenuItemActionHandler(this));

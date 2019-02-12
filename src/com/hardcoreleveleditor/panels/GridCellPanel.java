@@ -3,6 +3,8 @@ package com.hardcoreleveleditor.panels;
 import com.hardcoreleveleditor.components.AnimationComponent;
 import com.hardcoreleveleditor.components.IComponent;
 import com.hardcoreleveleditor.components.ShaderComponent;
+import com.hardcoreleveleditor.util.JSONUtils;
+import javafx.geometry.Point3D;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -41,6 +43,9 @@ public class GridCellPanel extends JPanel implements MouseListener
     private final int cellWidth;
     private final int cellHeight;
 
+    private int cellCol;
+    private int cellRow;
+
     private boolean isResourceCell;
     private Image animationIdleImage;
     private String animationName;
@@ -54,6 +59,8 @@ public class GridCellPanel extends JPanel implements MouseListener
         this.componentsPanel = componentsPanel;
         this.cellWidth = cellWidth;
         this.cellHeight = cellHeight;
+        this.cellCol = -1;
+        this.cellRow = -1;
         this.isResourceCell = isResourceCell;
 
         resetDynamicProperties();
@@ -111,6 +118,20 @@ public class GridCellPanel extends JPanel implements MouseListener
     }
 
     public String getAnimationName() { return this.animationName; }
+
+    public boolean hasCoords() { return this.cellCol != -1 && this.cellRow != -1; }
+
+    public void setCoords(final int col, final int row, final int rowCount)
+    {
+        this.cellCol = col;
+        this.cellRow = ((rowCount - 1) - row);
+    }
+
+    public String getTransformComponentJSONString()
+    {
+        Point3D translation = new Point3D(cellWidth/2 + cellCol * cellWidth, cellHeight/2 + cellRow * cellHeight, 1.0);
+        return "\"TransformComponent\": { \"translation\": " + JSONUtils.toJSONString(translation) + ", \"rotation\": [0.0, 0.0, 0.0], \"scale\": [" + (double)(cellWidth) + ", " + (double)(cellHeight) + ", 1.0] }";
+    }
 
     @Override
     public void paintComponent(Graphics g)

@@ -19,6 +19,12 @@ public class AnimationComponent implements IComponent
         return clone;
     }
 
+    @Override
+    public String toJSONString()
+    {
+        return "\"AnimationComponent\": { \"path\": \"" + animationName + "\", \"animationFrameDuration\": " + animationFrameDuration + " }";
+    }
+
     public String getAnimationName()
     {
         return animationName;

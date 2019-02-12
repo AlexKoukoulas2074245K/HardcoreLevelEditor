@@ -16,6 +16,12 @@ public class ShaderComponent implements IComponent
         return clone;
     }
 
+    @Override
+    public String toJSONString()
+    {
+        return "\"ShaderComponent\": { \"shaderName\": \"" + shaderName + "\" }";
+    }
+
     public String getShaderName()
     {
         return shaderName;

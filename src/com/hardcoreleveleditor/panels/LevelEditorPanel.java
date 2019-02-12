@@ -21,6 +21,8 @@ public class LevelEditorPanel extends JPanel
 
     private final ComponentsPanel componentsPanel;
     private final int cellSize;
+    private final int cellRows;
+    private final int cellCols;
     private final List<GridCellPanel> levelGridCells = new ArrayList<>();
     private Map<Image, Rectangle> backgroundAnimations = new HashMap<>();
 
@@ -31,6 +33,9 @@ public class LevelEditorPanel extends JPanel
 
         this.componentsPanel = componentsPanel;
         this.cellSize = cellSize;
+        this.cellCols = levelEditorCellCols;
+        this.cellRows = levelEditorCellRows;
+
         LevelEditorPanel.sCurrentCellSize = cellSize;
 
         for (int y = 0; y < levelEditorCellRows; ++y)
@@ -38,6 +43,7 @@ public class LevelEditorPanel extends JPanel
             for (int x = 0; x < levelEditorCellCols; ++x)
             {
                 GridCellPanel gridCellPanel = new GridCellPanel(componentsPanel, cellSize, cellSize, false);
+                gridCellPanel.setCoords(x, y, levelEditorCellRows);
                 levelGridCells.add(gridCellPanel);
                 add(gridCellPanel);
             }
@@ -47,6 +53,21 @@ public class LevelEditorPanel extends JPanel
     public void addBackgroundAnimation(final Image image, final Rectangle backgroundRectangle)
     {
         backgroundAnimations.put(image, backgroundRectangle);
+    }
+
+    public int getCellRowCount()
+    {
+        return cellRows;
+    }
+
+    public int getCellColCount()
+    {
+        return cellCols;
+    }
+
+    public int getCellSize()
+    {
+        return cellSize;
     }
 
     @Override
