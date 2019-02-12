@@ -14,8 +14,10 @@ import java.util.regex.Pattern;
 
 public class ResourcePanel extends JPanel
 {
-    private static final String RESOURCE_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/environments/" : "/Users/alex/Desktop/Code/Hardcore2D/res/environments/";
-    private static final String ACTUAL_RESOURCE_PATH_TO_BE_INPUT = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/" : "/Users/alex/Desktop/Code/Hardcore2D/res/";
+    //private static final String RESOURCE_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/" : "/Users/alex/Desktop/Code/Hardcore2D/res/environments/";
+    private static final String RESOURCE_ENVIRONMENTS_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/environments" : "/Users/alex/Desktop/Code/Hardcore2D/res/environments/";
+    private static final String RESOURCE_CHARACTERS_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/characters" : "/Users/alex/Desktop/Code/Hardcore2D/res/characters/";
+
     private static final String TOP_LEVEL_RESOURCES_DIRECTORY_NAME = "res";
     private static final String BOTTOM_LEVEL_ANIMATION_DIRECTORY_NAME = "idle";
     private static final int RESOURCE_GRID_CELL_SIZE = 80;
@@ -65,11 +67,18 @@ public class ResourcePanel extends JPanel
 
     private void loadResources()
     {
-        try
-        {
-            Files.walk(Paths.get(RESOURCE_PATH))
+        try {
+            Files.walk(Paths.get(RESOURCE_ENVIRONMENTS_PATH))
                     .filter(Files::isRegularFile)
-                    .forEach((file) -> { parseResourceFile(file); });
+                    .forEach((file) -> {
+                        parseResourceFile(file);
+                    });
+
+            Files.walk(Paths.get(RESOURCE_CHARACTERS_PATH))
+                    .filter(Files::isRegularFile)
+                    .forEach((file) -> {
+                        parseResourceFile(file);
+                    });
         }
         catch (IOException e)
         {
@@ -79,8 +88,14 @@ public class ResourcePanel extends JPanel
 
     private void parseResourceFile(final Path filePath)
     {
-        final String fileName = filePath.getFileName().toString();
-        if (fileName.endsWith("0.png"))
+        final String filePathString = filePath.toString();
+
+        if (filePathString.indexOf("idle") < 0)
+        {
+            return;
+        }
+        
+        if (filePathString.endsWith("0.png"))
         {
             try
             {
@@ -104,14 +119,14 @@ public class ResourcePanel extends JPanel
 
     private void fillResourceCellsWithResourceImages()
     {
-        GridCellPanel emptyGridCell = new GridCellPanel(componentsPanel, 64, 64, true);
+        GridCellPanel emptyGridCell = new GridCellPanel(componentsPanel, RESOURCE_GRID_CELL_SIZE, RESOURCE_GRID_CELL_SIZE, true);
         emptyGridCell.setAnimationImage(emptyImage, "environments/empty");
         add(emptyGridCell);
         resourceCells.add(emptyGridCell);
 
         for (Map.Entry<Image, String> imagePathEntry: resourceImagesToAbsolutePaths.entrySet())
         {
-            GridCellPanel gridCell = new GridCellPanel(componentsPanel, 64, 64, true);
+            GridCellPanel gridCell = new GridCellPanel(componentsPanel, RESOURCE_GRID_CELL_SIZE, RESOURCE_GRID_CELL_SIZE, true);
             gridCell.setAnimationImage(imagePathEntry.getKey(), imagePathEntry.getValue());
             add(gridCell);
             resourceCells.add(gridCell);
