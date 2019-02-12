@@ -57,7 +57,19 @@ public class LevelEditorPanel extends JPanel
         backgroundInvisibleCell.setAnimationImage(image, animationName);
         backgroundInvisibleCell.getCellComponents().remove("PhysicsComponent");
         backgroundInvisibleCell.getCellComponents().put("ShaderComponent", new ShaderComponent("background"));
-        backgroundInvisibleCell.setCoords(0, 0, cellRows);
+    }
+
+    public GridCellPanel getCellWithCustomName(final String customName)
+    {
+        for (GridCellPanel cell: levelGridCells)
+        {
+            if (customName.equals(cell.getCustomCellName()))
+            {
+                return cell;
+            }
+        }
+
+        return null;
     }
 
     public GridCellPanel getBackgroundCell()
@@ -113,6 +125,12 @@ public class LevelEditorPanel extends JPanel
                 g2.fillRect((int)(gridCellPanel.getX() + LevelEditorPanel.sCurrentCellSize/2 + physicsComponent.hitBoxCenterPoint.getX() - physicsComponent.hitBoxDimensions.getX()/2),
                             (int)(gridCellPanel.getY() + LevelEditorPanel.sCurrentCellSize/2 - physicsComponent.hitBoxCenterPoint.getY() - physicsComponent.hitBoxDimensions.getY()/2),
                             (int)(physicsComponent.hitBoxDimensions.getX()), (int)(physicsComponent.hitBoxDimensions.getY()));
+            }
+
+            if (gridCellPanel.getCustomCellName() != null)
+            {
+                g2.setColor(Color.BLACK);
+                g2.drawString(gridCellPanel.getCustomCellName(), gridCellPanel.getX() + 10, gridCellPanel.getY() + 20);
             }
 
             if (gridCellPanel == GridCellPanel.sSelectedGridCell)

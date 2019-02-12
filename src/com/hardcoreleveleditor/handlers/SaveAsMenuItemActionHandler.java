@@ -109,7 +109,8 @@ public class SaveAsMenuItemActionHandler implements ActionListener
 
                 sb.append("\t\t{"); sb.append('\n');
 
-                sb.append("\t\t\t\"name\": \"" +(cell.getAnimationName() + "-" + i) + "\","); sb.append('\n');
+                final String cellName = cell.getCustomCellName() == null ? (cell.getAnimationName() + "-" + i) : cell.getCustomCellName();
+                sb.append("\t\t\t\"name\": \"" + cellName + "\","); sb.append('\n');
                 sb.append("\t\t\t\"components\":"); sb.append('\n');
                 sb.append("\t\t\t{"); sb.append('\n');
 

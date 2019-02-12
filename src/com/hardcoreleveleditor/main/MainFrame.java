@@ -6,6 +6,7 @@ import com.hardcoreleveleditor.panels.MainPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.security.Key;
 
 public class MainFrame extends JFrame
 {
@@ -43,6 +44,7 @@ public class MainFrame extends JFrame
         menuBar.add(createEditMenu());
         menuBar.add(createBackgroundMenu());
         menuBar.add(createComponentsMenu());
+        menuBar.add(createGameMenu());
         setJMenuBar(menuBar);
     }
 
@@ -122,5 +124,17 @@ public class MainFrame extends JFrame
         componentsMenu.add(addAIComponentMenuItem);
 
         return componentsMenu;
+    }
+
+    private JMenu createGameMenu()
+    {
+        JMenu gameMenu = new JMenu("Game");
+
+        JMenuItem markPlayerCellMenuItem = new JMenuItem("Mark Player Cell");
+        markPlayerCellMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, MENU_MODIFIER_KEY));
+        markPlayerCellMenuItem.addActionListener(new MarkPlayerCellMenuItemActionHandler(this, mainPanel.getLevelEditorPanel()));
+
+        gameMenu.add(markPlayerCellMenuItem);
+        return gameMenu;
     }
 }

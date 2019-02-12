@@ -50,6 +50,7 @@ public class GridCellPanel extends JPanel implements MouseListener
     private boolean isResourceCell;
     private Image animationIdleImage;
     private String animationName;
+    private String customCellName;
 
     public GridCellPanel(final ComponentsPanel componentsPanel, final int cellWidth, final int cellHeight, final boolean isResourceCell)
     {
@@ -63,6 +64,7 @@ public class GridCellPanel extends JPanel implements MouseListener
         this.cellCol = -1;
         this.cellRow = -1;
         this.isResourceCell = isResourceCell;
+        this.customCellName = null;
 
         resetDynamicProperties();
 
@@ -114,6 +116,10 @@ public class GridCellPanel extends JPanel implements MouseListener
     {
         return isResourceCell;
     }
+
+    public String getCustomCellName() { return this.customCellName; }
+
+    public void setCustomCellName(final String customCellName) { this.customCellName = customCellName; }
 
     public Image getImage()
     {
