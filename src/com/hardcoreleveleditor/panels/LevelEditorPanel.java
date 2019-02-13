@@ -109,15 +109,18 @@ public class LevelEditorPanel extends JPanel
 
         for (GridCellPanel gridCellPanel: levelGridCells)
         {
+            // Draw cell outlines
             g2.setColor(Color.black);
             g2.drawLine(gridCellPanel.getX(), gridCellPanel.getY() + cellSize - 1, gridCellPanel.getX() + cellSize - 1, gridCellPanel.getY() + cellSize - 1);
             g2.drawLine(gridCellPanel.getX() + cellSize - 1 , gridCellPanel.getY(), gridCellPanel.getX() + cellSize - 1, gridCellPanel.getY() + cellSize - 1);
 
+            // Draw cell panel image
             if (gridCellPanel.getImage() != null)
             {
                 g2.drawImage(gridCellPanel.getImage(), gridCellPanel.getX(), gridCellPanel.getY(), cellSize, cellSize, null);
             }
 
+            // Draw physics hitbox
             if (gridCellPanel.getCellComponents().containsKey("PhysicsComponent"))
             {
                 PhysicsComponent physicsComponent = (PhysicsComponent)gridCellPanel.getCellComponents().get("PhysicsComponent");
@@ -127,15 +130,24 @@ public class LevelEditorPanel extends JPanel
                             (int)(physicsComponent.hitBoxDimensions.getX()), (int)(physicsComponent.hitBoxDimensions.getY()));
             }
 
+            // Draw custom name if cell has one
             if (gridCellPanel.getCustomCellName() != null)
             {
                 g2.setColor(Color.BLACK);
-                g2.drawString(gridCellPanel.getCustomCellName(), gridCellPanel.getX() + 10, gridCellPanel.getY() + 20);
+                g2.drawString(gridCellPanel.getCustomCellName(), gridCellPanel.getX() + 10, gridCellPanel.getY() + this.cellSize - 10);
             }
 
             if (gridCellPanel == GridCellPanel.sSelectedGridCell)
             {
+                // Draw selected image
                 g2.drawImage(GridCellPanel.sSelectedCellImage, gridCellPanel.getX(), gridCellPanel.getY(), cellSize, cellSize, null);
+
+                // Draw coords string if not resource cell
+                if (gridCellPanel.isResourceCell() == false)
+                {
+                    g2.setColor(Color.BLACK);
+                    g2.drawString((gridCellPanel.getCol() + ", " + gridCellPanel.getRow()), gridCellPanel.getX() + 10, gridCellPanel.getY() + 20);
+                }
             }
         }
     }

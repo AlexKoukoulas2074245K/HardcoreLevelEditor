@@ -130,11 +130,11 @@ public class MainFrame extends JFrame
     {
         JMenu gameMenu = new JMenu("Game");
 
-        JMenuItem markPlayerCellMenuItem = new JMenuItem("Mark Player Cell");
-        markPlayerCellMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, MENU_MODIFIER_KEY));
-        markPlayerCellMenuItem.addActionListener(new MarkPlayerCellMenuItemActionHandler(this, mainPanel.getLevelEditorPanel()));
+        JMenuItem setCellEntityNameMenuItem = new JMenuItem("Set Cell Entity Name");
+        setCellEntityNameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, MENU_MODIFIER_KEY));
+        setCellEntityNameMenuItem.addActionListener(new SetCellEntityNameMenuItemActionHandler(this, mainPanel.getLevelEditorPanel()));
 
-        gameMenu.add(markPlayerCellMenuItem);
+        gameMenu.add(setCellEntityNameMenuItem);
         return gameMenu;
     }
 }

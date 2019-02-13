@@ -128,6 +128,10 @@ public class GridCellPanel extends JPanel implements MouseListener
 
     public String getAnimationName() { return this.animationName; }
 
+    public int getCol() { return this.cellCol; }
+
+    public int getRow() { return this.cellRow; }
+
     public boolean hasCoords() { return this.cellCol != -1 && this.cellRow != -1; }
 
     public void setCoords(final int col, final int row, final int rowCount)
