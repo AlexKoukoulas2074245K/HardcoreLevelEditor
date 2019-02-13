@@ -12,6 +12,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -99,34 +100,28 @@ public class SaveAsMenuItemActionHandler implements ActionListener
                 sb.append("\t\t},"); sb.append('\n');
             }
 
-            for (int i = 0; i < levelEditorPanel.getAllLevelGridCells().size(); ++i)
+            List<GridCellPanel> characterCells = new ArrayList<>();
+            List<GridCellPanel> environmentCells = new ArrayList<>();
+
+            for (GridCellPanel gridCell: levelEditorPanel.getAllLevelGridCells())
             {
-                GridCellPanel cell = levelEditorPanel.getAllLevelGridCells().get(i);
-                if (cell.getCellComponents().size() == 0)
+                if (gridCell.getCellComponents().size() == 0)
                 {
                     continue;
                 }
 
-                sb.append("\t\t{"); sb.append('\n');
-
-                final String cellName = cell.getCustomCellName() == null ? (cell.getAnimationName() + "-" + i) : cell.getCustomCellName();
-                sb.append("\t\t\t\"name\": \"" + cellName + "\","); sb.append('\n');
-                sb.append("\t\t\t\"components\":"); sb.append('\n');
-                sb.append("\t\t\t{"); sb.append('\n');
-
-                for (Map.Entry<String, IComponent> entry: cell.getCellComponents().entrySet())
+                if (gridCell.getAnimationName().indexOf("characters") >= 0)
                 {
-                    sb.append("\t\t\t\t");
-                    sb.append(entry.getValue().toJSONString());
-                    sb.append(",\n");
+                    characterCells.add(gridCell);
                 }
-
-                sb.append("\t\t\t\t");
-                sb.append(cell.getTransformComponentJSONString());
-                sb.append('\n');
-                sb.append("\t\t\t}"); sb.append('\n');
-                sb.append("\t\t},"); sb.append('\n');
+                else
+                {
+                    environmentCells.add(gridCell);
+                }
             }
+
+            writeCellsToStringBuilder(environmentCells, sb);
+            writeCellsToStringBuilder(characterCells, sb);
 
             sb.setLength(sb.length() - 2);
             sb.append('\n');
@@ -134,10 +129,38 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             sb.append("}"); sb.append('\n');
 
             bw.write(sb.toString());
+            JOptionPane.showConfirmDialog(mainFrame, "Successfully saved level at: " + file.getAbsolutePath(), "Save Level", JOptionPane.OK_OPTION);
         }
         catch (IOException e)
         {
             e.printStackTrace();
+        }
+    }
+
+    private void writeCellsToStringBuilder(final List<GridCellPanel> cells, final StringBuilder sb)
+    {
+        for (int i = 0; i < cells.size(); ++i)
+        {
+            GridCellPanel cell = cells.get(i);
+            sb.append("\t\t{"); sb.append('\n');
+
+            final String cellName = cell.getCustomCellName() == null ? (cell.getAnimationName() + "-" + i) : cell.getCustomCellName();
+            sb.append("\t\t\t\"name\": \"" + cellName + "\","); sb.append('\n');
+            sb.append("\t\t\t\"components\":"); sb.append('\n');
+            sb.append("\t\t\t{"); sb.append('\n');
+
+            for (Map.Entry<String, IComponent> entry: cell.getCellComponents().entrySet())
+            {
+                sb.append("\t\t\t\t");
+                sb.append(entry.getValue().toJSONString());
+                sb.append(",\n");
+            }
+
+            sb.append("\t\t\t\t");
+            sb.append(cell.getTransformComponentJSONString());
+            sb.append('\n');
+            sb.append("\t\t\t}"); sb.append('\n');
+            sb.append("\t\t},"); sb.append('\n');
         }
     }
 }
