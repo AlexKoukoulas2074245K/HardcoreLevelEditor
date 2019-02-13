@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9bd2545-9823-4115-a878-9cbe13f070af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/DamageComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/HealthComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditDamageComponentDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditHealthComponentDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddDamageComponentMenuItemActionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddHealthComponentMenuItemActionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/MarkPlayerCellMenuItemActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SetCellEntityNameMenuItemActionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditPhysicsComponentDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditPhysicsComponentDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ComponentsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ComponentsPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/GridCellPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/GridCellPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/LevelEditorPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/LevelEditorPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/util/JSONUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/util/JSONUtils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,56 +22,48 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-333255830">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.6" value="4" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="35" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="35" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dummy" value="14" />
-          <entry key="java" value="9874" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="9874" />
-          <entry key="PLAIN_TEXT" value="14" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="132" column="32" lean-forward="true" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
+            <state relative-caret-position="875">
+              <caret line="124" column="80" selection-start-line="124" selection-start-column="80" selection-end-line="124" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SetCellEntityNameMenuItemActionHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/DamageComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="52" column="103" selection-start-line="52" selection-start-column="103" selection-end-line="52" selection-end-column="103" />
+            <state relative-caret-position="-1">
+              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+              <folding>
+                <element signature="e#504#505#0" expanded="true" />
+                <element signature="e#525#526#0" expanded="true" />
+                <element signature="e#606#607#0" expanded="true" />
+                <element signature="e#665#666#0" expanded="true" />
+                <element signature="e#724#725#0" expanded="true" />
+                <element signature="e#743#744#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SaveAsMenuItemActionHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-691">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/PhysicsComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="42" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,10 +72,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditShaderComponentDialog.java">
+        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ComponentsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="55" column="25" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="55" selection-end-column="25" />
+            <state relative-caret-position="509">
+              <caret line="69" column="66" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditDamageComponentDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="50" column="107" selection-start-line="50" selection-start-column="107" selection-end-line="50" selection-end-column="107" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditHealthComponentDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="341">
+              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,52 +108,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SaveAsMenuItemActionHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditPhysicsComponentDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="111" column="138" selection-start-line="111" selection-start-column="138" selection-end-line="111" selection-end-column="138" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1462">
-              <caret line="96" selection-start-line="96" selection-end-line="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/LevelEditorPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/GridCellPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SetBackgroundMenuItemActionHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="29" column="50" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
+            <state relative-caret-position="99">
+              <caret line="102" column="89" selection-start-line="102" selection-start-column="89" selection-end-line="102" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,10 +122,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/util/JSONUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="22" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="270">
+              <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#503#504#0" expanded="true" />
+                <element signature="e#544#545#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,7 +136,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/AIComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="240">
               <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
               <folding>
                 <element signature="e#470#471#0" expanded="true" />
@@ -215,37 +198,38 @@
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/NewMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/LabelledInputPanel.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditAnimationComponentDialog.java" />
-        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditPhysicsComponentDialog.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/CopyMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/CutMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/PasteMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/MainPanel.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddPhysicsComponentMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditAIComponentDialog.java" />
-        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ComponentsPanel.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddAIComponentMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/IComponent.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/AIComponent.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/AnimationComponent.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/ShaderComponent.java" />
-        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/util/JSONUtils.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/PhysicsComponent.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SetBackgroundMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/MarkPlayerCellMenuItemActionHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/GridCellPanel.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/LevelEditorPanel.java" />
-        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SetCellEntityNameMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SaveAsMenuItemActionHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/HealthComponent.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditHealthComponentDialog.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/GridCellPanel.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddDamageComponenetMenuItemActionHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddHealthComponentMenuItemActionHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddDamageComponentMenuItemActionHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ComponentsPanel.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditDamageComponentDialog.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/util/JSONUtils.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/components/DamageComponent.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditPhysicsComponentDialog.java" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="2119" />
@@ -259,6 +243,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -337,13 +322,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550052346522" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550093099230" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/external/json-20180813.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -410,13 +394,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75802000" />
+    <option name="totallyTimeSpent" value="81458000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2119" y="-111" width="1675" height="1167" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="795" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23219815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23247497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -425,7 +409,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49928468" weight="0.32863188" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47368422" visible="true" weight="0.33107454" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.47353363" visible="true" weight="0.33001423" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7083591" weight="0.3891578" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -433,8 +417,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5263158" side_tool="true" visible="true" weight="0.33107454" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48854488" weight="0.32913843" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.52646637" side_tool="true" visible="true" weight="0.33001423" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48712447" weight="0.32859176" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -450,9 +434,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/managers/GridCellManager.java" />
@@ -519,13 +500,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/javax/swing/JButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="89" column="11" selection-start-line="89" selection-start-column="11" selection-end-line="89" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/javax/swing/JButton.java" />
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/CopyMenuItemActionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -546,13 +521,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/regex/Pattern.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32283">
-          <caret line="1956" selection-start-line="1956" selection-end-line="1956" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/regex/Pattern.java" />
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/CutMenuItemActionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -563,50 +532,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddPhysicsComponentMenuItemActionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ComponentsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="68" column="65" selection-start-line="68" selection-start-column="65" selection-end-line="68" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditAIComponentDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditPhysicsComponentDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="108" column="16" selection-start-line="108" selection-start-column="16" selection-end-line="110" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditAnimationComponentDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -624,31 +553,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/IComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/ShaderComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
-          <folding>
-            <element signature="e#436#437#0" expanded="true" />
-            <element signature="e#511#512#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/BufferedWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="108" column="21" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/io/BufferedWriter.java" />
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/MainPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -661,43 +566,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/AnimationComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="141" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="141" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/PhysicsComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="42" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddAIComponentMenuItemActionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1462">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="1515">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SetBackgroundMenuItemActionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="270">
           <caret line="29" column="50" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -705,48 +583,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/util/JSONUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/AIComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/GridCellPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/LevelEditorPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="132" column="32" lean-forward="true" selection-start-line="132" selection-start-column="32" selection-end-line="132" selection-end-column="32" />
+        <state relative-caret-position="315">
+          <caret line="150" column="13" lean-forward="true" selection-start-line="150" selection-start-column="13" selection-end-line="150" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -770,10 +610,188 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/IComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/ShaderComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="21" column="78" selection-start-line="21" selection-start-column="78" selection-end-line="21" selection-end-column="78" />
+          <folding>
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/AnimationComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="141" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="141" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/GridCellPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="101" column="39" selection-start-line="101" selection-start-column="39" selection-end-line="101" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddAIComponentMenuItemActionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-428">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddPhysicsComponentMenuItemActionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="41" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddHealthComponentMenuItemActionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="27" column="70" selection-start-line="27" selection-start-column="70" selection-end-line="27" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/AddDamageComponentMenuItemActionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditAnimationComponentDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="70" column="5" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="70" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/HealthComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditHealthComponentDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditDamageComponentDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="50" column="107" selection-start-line="50" selection-start-column="107" selection-end-line="50" selection-end-column="107" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/util/JSONUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#544#545#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ComponentsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="69" column="66" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/AIComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+          <folding>
+            <element signature="e#470#471#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/DamageComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding>
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#665#666#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="124" column="80" selection-start-line="124" selection-start-column="80" selection-end-line="124" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SaveAsMenuItemActionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="111" column="138" selection-start-line="111" selection-start-column="138" selection-end-line="111" selection-end-column="138" />
+        <state relative-caret-position="-691">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/components/PhysicsComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="38" column="6" selection-start-line="38" selection-start-column="6" selection-end-line="42" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/dialogs/EditPhysicsComponentDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="102" column="89" selection-start-line="102" selection-start-column="89" selection-end-line="102" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

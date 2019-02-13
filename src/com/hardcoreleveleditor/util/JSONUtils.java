@@ -15,4 +15,9 @@ public class JSONUtils
     {
         return "[" + point3d.getX() + ", " + point3d.getY() + ", " + point3d.getZ() + "]";
     }
+
+    public static String toJSONString(final boolean value)
+    {
+        return value ? "true" : "false";
+    }
 }

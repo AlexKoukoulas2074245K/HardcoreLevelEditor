@@ -99,9 +99,7 @@ public class GridCellPanel extends JPanel implements MouseListener
         {
             if (animationName.endsWith("empty"))
             {
-                cellComponents.remove("AnimationComponent");
-                cellComponents.remove("ShaderComponent");
-                cellComponents.remove("PhysicsComponent");
+                cellComponents.clear();
             }
             else
             {

@@ -100,7 +100,7 @@ public class EditPhysicsComponentDialog extends JDialog
             public void actionPerformed(ActionEvent e)
             {
                 physicsComponent.bodyType = PhysicsComponent.BodyType.valueOf(bodyTypes[bodyTypeDropdown.getSelectedIndex()]);
-                physicsComponent.gravity = new Point3D(Double.parseDouble(physicsGravityYInputPanel.getTextField().getText()), Double.parseDouble(physicsGravityYInputPanel.getTextField().getText()), Double.parseDouble(physicsGravityZInputPanel.getTextField().getText()));
+                physicsComponent.gravity = new Point3D(Double.parseDouble(physicsGravityXInputPanel.getTextField().getText()), Double.parseDouble(physicsGravityYInputPanel.getTextField().getText()), Double.parseDouble(physicsGravityZInputPanel.getTextField().getText()));
                 physicsComponent.maxVelocity = new Point3D(Double.parseDouble(physicsMaxVelocityXInputPanel.getTextField().getText()), Double.parseDouble(physicsMaxVelocityYInputPanel.getTextField().getText()), Double.parseDouble(physicsMaxVelocityZInputPanel.getTextField().getText()));
                 physicsComponent.minVelocity = new Point3D(Double.parseDouble(physicsMinVelocityXInputPanel.getTextField().getText()), Double.parseDouble(physicsMinVelocityYInputPanel.getTextField().getText()), Double.parseDouble(physicsMinVelocityZInputPanel.getTextField().getText()));
                 physicsComponent.hitBoxCenterPoint = new Point2D(Double.parseDouble(physicsHitBoxCenterPointXPanel.getTextField().getText()), Double.parseDouble(physicsHitBoxCenterPointYPanel.getTextField().getText()));

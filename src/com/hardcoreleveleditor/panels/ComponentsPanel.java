@@ -1,10 +1,7 @@
 package com.hardcoreleveleditor.panels;
 
 import com.hardcoreleveleditor.components.IComponent;
-import com.hardcoreleveleditor.dialogs.EditAIComponentDialog;
-import com.hardcoreleveleditor.dialogs.EditAnimationComponentDialog;
-import com.hardcoreleveleditor.dialogs.EditPhysicsComponentDialog;
-import com.hardcoreleveleditor.dialogs.EditShaderComponentDialog;
+import com.hardcoreleveleditor.dialogs.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -69,6 +66,8 @@ public class ComponentsPanel extends JPanel
                             case "AIComponent": new EditAIComponentDialog(mainFrame, entry.getValue()); break;
                             case "PhysicsComponent": new EditPhysicsComponentDialog(mainFrame, entry.getValue()); break;
                             case "ShaderComponent": new EditShaderComponentDialog(mainFrame, entry.getValue()); break;
+                            case "HealthComponent": new EditHealthComponentDialog(mainFrame, entry.getValue()); break;
+                            case "DamageComponent": new EditDamageComponentDialog(mainFrame, entry.getValue()); break;
                         }
 
                     }

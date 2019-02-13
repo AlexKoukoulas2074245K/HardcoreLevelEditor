@@ -112,7 +112,7 @@ public class MainFrame extends JFrame
     {
         JMenu componentsMenu = new JMenu("Components");
 
-        JMenuItem addPhysicsComponentMenuItem  = new JMenuItem("Add Physics Component..");
+        JMenuItem addPhysicsComponentMenuItem  = new JMenuItem("Add Physics Component");
         addPhysicsComponentMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, MENU_MODIFIER_KEY));
         addPhysicsComponentMenuItem.addActionListener(new AddPhysicsComponentMenuItemActionHandler(this, mainPanel.getComponentsPanel()));
 
@@ -120,8 +120,18 @@ public class MainFrame extends JFrame
         addAIComponentMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, MENU_MODIFIER_KEY));
         addAIComponentMenuItem.addActionListener(new AddAIComponentMenuItemActionHandler(this, mainPanel.getComponentsPanel()));
 
+        JMenuItem addHealthComponentMenuItem = new JMenuItem("Add Health Component");
+        addHealthComponentMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, MENU_MODIFIER_KEY));
+        addHealthComponentMenuItem.addActionListener(new AddHealthComponentMenuItemActionHandler(this, mainPanel.getComponentsPanel()));
+
+        JMenuItem addDamageComponenetMenuItem = new JMenuItem("Add Damage Component");
+        addDamageComponenetMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, MENU_MODIFIER_KEY));
+        addDamageComponenetMenuItem.addActionListener(new AddDamageComponentMenuItemActionHandler(this, mainPanel.getComponentsPanel()));
+
         componentsMenu.add(addPhysicsComponentMenuItem);
         componentsMenu.add(addAIComponentMenuItem);
+        componentsMenu.add(addHealthComponentMenuItem);
+        componentsMenu.add(addDamageComponenetMenuItem);
 
         return componentsMenu;
     }
