@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HardcoreLevelEditor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HardcoreLevelEditor_jar</output-path>
+    <root id="archive" name="HardcoreLevelEditor.jar">
+      <element id="module-output" name="HardcoreLevelEditor" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/external/json-20180813.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

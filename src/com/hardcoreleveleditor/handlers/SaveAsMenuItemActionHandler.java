@@ -1,6 +1,7 @@
 package com.hardcoreleveleditor.handlers;
 
 import com.hardcoreleveleditor.components.IComponent;
+import com.hardcoreleveleditor.components.PhysicsComponent;
 import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 import com.hardcoreleveleditor.panels.LevelEditorPanel;
@@ -101,12 +102,24 @@ public class SaveAsMenuItemActionHandler implements ActionListener
 
             List<GridCellPanel> characterCells = new ArrayList<>();
             List<GridCellPanel> environmentCells = new ArrayList<>();
+            List<GridCellPanel> kinematicCells = new ArrayList<>();
 
             for (GridCellPanel gridCell: levelEditorPanel.getAllLevelGridCells())
             {
                 if (gridCell.getCellComponents().size() == 0)
                 {
                     continue;
+                }
+
+                PhysicsComponent physicsComponent = null;
+                if (gridCell.getCellComponents().containsKey("PhysicsComponent"))
+                {
+                    physicsComponent = (PhysicsComponent)gridCell.getCellComponents().get("PhysicsComponent");
+                    if (physicsComponent.bodyType == PhysicsComponent.BodyType.KINEMATIC)
+                    {
+                        kinematicCells.add(gridCell);
+                        continue;
+                    }
                 }
 
                 if (gridCell.getAnimationName().indexOf("characters") >= 0)
@@ -120,6 +133,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             }
 
             writeCellsToStringBuilder(environmentCells, sb);
+            writeCellsToStringBuilder(kinematicCells, sb);
             writeCellsToStringBuilder(characterCells, sb);
 
             sb.setLength(sb.length() - 2);
