@@ -1,6 +1,7 @@
 package com.hardcoreleveleditor.handlers;
 
 import com.hardcoreleveleditor.components.IComponent;
+import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 import com.hardcoreleveleditor.panels.LevelEditorPanel;
 
@@ -20,13 +21,11 @@ public class SaveAsMenuItemActionHandler implements ActionListener
 {
     private static final String LEVEL_FILE_EXTENSION = ".json";
 
-    private final JFrame mainFrame;
-    private final LevelEditorPanel levelEditorPanel;
+    private final MainFrame mainFrame;
 
-    public SaveAsMenuItemActionHandler(final JFrame mainFrame, final LevelEditorPanel levelEditorPanel)
+    public SaveAsMenuItemActionHandler(final MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
-        this.levelEditorPanel = levelEditorPanel;
     }
 
     @Override
@@ -67,7 +66,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file)))
         {
             StringBuilder sb = new StringBuilder();
-
+            LevelEditorPanel levelEditorPanel = mainFrame.getMainPanel().getLevelEditorPanel();
             final double levelHorBound = (double)(levelEditorPanel.getCellColCount() * levelEditorPanel.getCellSize());
             final double levelVerBound = (double)(levelEditorPanel.getCellRowCount() * levelEditorPanel.getCellSize());
 
@@ -129,7 +128,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             sb.append("}"); sb.append('\n');
 
             bw.write(sb.toString());
-            JOptionPane.showConfirmDialog(mainFrame, "Successfully saved level at: " + file.getAbsolutePath(), "Save Level", JOptionPane.OK_OPTION);
+            JOptionPane.showMessageDialog(mainFrame, "Successfully saved level at: " + file.getAbsolutePath(), "Save Level", JOptionPane.INFORMATION_MESSAGE);
         }
         catch (IOException e)
         {
@@ -144,7 +143,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             GridCellPanel cell = cells.get(i);
             sb.append("\t\t{"); sb.append('\n');
 
-            final String cellName = cell.getCustomCellName() == null ? (cell.getAnimationName() + "-" + i) : cell.getCustomCellName();
+            final String cellName = cell.getCustomCellName() == null ? "" : cell.getCustomCellName();
             sb.append("\t\t\t\"name\": \"" + cellName + "\","); sb.append('\n');
             sb.append("\t\t\t\"components\":"); sb.append('\n');
             sb.append("\t\t\t{"); sb.append('\n');

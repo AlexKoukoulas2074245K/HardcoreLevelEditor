@@ -81,7 +81,7 @@ public class ComponentsPanel extends JPanel
                     {
                         if (entry.getKey().equals("AnimationComponent") || entry.getKey().equals("ShaderComponent"))
                         {
-                            GridCellPanel.sSelectedGridCell.setAnimationImage(null, "");
+                            GridCellPanel.sSelectedGridCell.setVisual(null, "");
                             if (entry.getKey().equals("AnimationComponent"))
                             {
                                 cellComponents.remove("ShaderComponent");

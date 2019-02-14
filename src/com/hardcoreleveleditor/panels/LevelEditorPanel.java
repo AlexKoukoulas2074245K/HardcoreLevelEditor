@@ -1,18 +1,12 @@
 package com.hardcoreleveleditor.panels;
 
-import com.hardcoreleveleditor.components.AnimationComponent;
 import com.hardcoreleveleditor.components.PhysicsComponent;
 import com.hardcoreleveleditor.components.ShaderComponent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
 
 public class LevelEditorPanel extends JPanel
 {
@@ -26,7 +20,7 @@ public class LevelEditorPanel extends JPanel
     private final int cellCols;
     private final List<GridCellPanel> levelGridCells = new ArrayList<>();
     private GridCellPanel backgroundInvisibleCell = null;
-
+    private GridCellPanel[][] gridCells = null;
 
     public LevelEditorPanel(final ComponentsPanel componentsPanel, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
     {
@@ -39,6 +33,8 @@ public class LevelEditorPanel extends JPanel
 
         LevelEditorPanel.sCurrentCellSize = cellSize;
 
+        gridCells = new GridCellPanel[levelEditorCellRows][levelEditorCellCols];
+
         for (int y = 0; y < levelEditorCellRows; ++y)
         {
             for (int x = 0; x < levelEditorCellCols; ++x)
@@ -46,6 +42,7 @@ public class LevelEditorPanel extends JPanel
                 GridCellPanel gridCellPanel = new GridCellPanel(componentsPanel, cellSize, cellSize, false);
                 gridCellPanel.setCoords(x, y, levelEditorCellRows);
                 levelGridCells.add(gridCellPanel);
+                gridCells[y][x] = gridCellPanel;
                 add(gridCellPanel);
             }
         }
@@ -54,9 +51,14 @@ public class LevelEditorPanel extends JPanel
     public void addBackgroundAnimation(final Image image, final String animationName)
     {
         backgroundInvisibleCell = new GridCellPanel(componentsPanel, 2, 2, false);
-        backgroundInvisibleCell.setAnimationImage(image, animationName);
+        backgroundInvisibleCell.setVisual(image, animationName);
         backgroundInvisibleCell.getCellComponents().remove("PhysicsComponent");
         backgroundInvisibleCell.getCellComponents().put("ShaderComponent", new ShaderComponent("background"));
+    }
+
+    public GridCellPanel getCellWithCoords(final int cellCol, final int cellRow)
+    {
+        return gridCells[cellRow][cellCol];
     }
 
     public GridCellPanel getCellWithCustomName(final String customName)

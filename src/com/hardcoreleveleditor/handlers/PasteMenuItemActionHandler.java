@@ -32,7 +32,7 @@ public class PasteMenuItemActionHandler implements ActionListener
                 GridCellPanel.sSelectedGridCell.getCellComponents().put(entry.getKey(), entry.getValue().getClone());
             }
 
-            GridCellPanel.sSelectedGridCell.setAnimationImage(GridCellPanel.sCopyOrCutGridCell.getImage(), GridCellPanel.sCopyOrCutGridCell.getAnimationName());
+            GridCellPanel.sSelectedGridCell.setVisual(GridCellPanel.sCopyOrCutGridCell.getImage(), GridCellPanel.sCopyOrCutGridCell.getAnimationName());
         }
 
         mainFrame.getRootPane().revalidate();

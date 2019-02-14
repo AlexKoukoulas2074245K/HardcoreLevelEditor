@@ -2,6 +2,7 @@ package com.hardcoreleveleditor.handlers;
 
 import com.hardcoreleveleditor.components.HealthComponent;
 import com.hardcoreleveleditor.components.PhysicsComponent;
+import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.ComponentsPanel;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 
@@ -11,13 +12,11 @@ import java.awt.event.ActionListener;
 
 public class AddHealthComponentMenuItemActionHandler implements ActionListener
 {
-    private final JFrame mainFrame;
-    private final ComponentsPanel componentsPanel;
+    private final MainFrame mainFrame;
 
-    public AddHealthComponentMenuItemActionHandler(final JFrame mainFrame, final ComponentsPanel componentsPanel)
+    public AddHealthComponentMenuItemActionHandler(final MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
-        this.componentsPanel = componentsPanel;
     }
 
     @Override
@@ -28,7 +27,7 @@ public class AddHealthComponentMenuItemActionHandler implements ActionListener
             if (GridCellPanel.sSelectedGridCell.isResourceCell() == false)
             {
                 GridCellPanel.sSelectedGridCell.getCellComponents().put("HealthComponent", new HealthComponent());
-                componentsPanel.updateComponentsPanel();
+                mainFrame.getMainPanel().getComponentsPanel().updateComponentsPanel();
                 mainFrame.getRootPane().revalidate();
                 mainFrame.getRootPane().repaint();
             }

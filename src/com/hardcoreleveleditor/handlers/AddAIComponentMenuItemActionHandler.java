@@ -3,6 +3,7 @@ package com.hardcoreleveleditor.handlers;
 import com.hardcoreleveleditor.components.AIComponent;
 import com.hardcoreleveleditor.components.PhysicsComponent;
 import com.hardcoreleveleditor.components.ShaderComponent;
+import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.ComponentsPanel;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 
@@ -14,13 +15,11 @@ import java.awt.event.KeyEvent;
 
 public class AddAIComponentMenuItemActionHandler implements ActionListener
 {
-    private final JFrame mainFrame;
-    private final ComponentsPanel componentsPanel;
+    private final MainFrame mainFrame;
 
-    public AddAIComponentMenuItemActionHandler(final JFrame mainFrame, final ComponentsPanel componentsPanel)
+    public AddAIComponentMenuItemActionHandler(final MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
-        this.componentsPanel = componentsPanel;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class AddAIComponentMenuItemActionHandler implements ActionListener
             public void actionPerformed(ActionEvent e)
             {
                 GridCellPanel.sSelectedGridCell.getCellComponents().put("AIComponent", new AIComponent(aiComponentClassNameField.getText()));
-                componentsPanel.updateComponentsPanel();
+                mainFrame.getMainPanel().getComponentsPanel().updateComponentsPanel();
                 mainFrame.getRootPane().revalidate();
                 mainFrame.getRootPane().repaint();
                 aiComponentCreationDialog.dispose();

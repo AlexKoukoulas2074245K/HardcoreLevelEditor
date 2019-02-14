@@ -2,6 +2,7 @@ package com.hardcoreleveleditor.handlers;
 
 import com.hardcoreleveleditor.components.DamageComponent;
 import com.hardcoreleveleditor.components.PhysicsComponent;
+import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.ComponentsPanel;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 
@@ -11,13 +12,11 @@ import java.awt.event.ActionListener;
 
 public class AddDamageComponentMenuItemActionHandler implements ActionListener
 {
-    private final JFrame mainFrame;
-    private final ComponentsPanel componentsPanel;
+    private final MainFrame mainFrame;
 
-    public AddDamageComponentMenuItemActionHandler(final JFrame mainFrame, final ComponentsPanel componentsPanel)
+    public AddDamageComponentMenuItemActionHandler(final MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
-        this.componentsPanel = componentsPanel;
     }
 
     @Override
@@ -28,7 +27,7 @@ public class AddDamageComponentMenuItemActionHandler implements ActionListener
             if (GridCellPanel.sSelectedGridCell.isResourceCell() == false)
             {
                 GridCellPanel.sSelectedGridCell.getCellComponents().put("DamageComponent", new DamageComponent());
-                componentsPanel.updateComponentsPanel();
+                mainFrame.getMainPanel().getComponentsPanel().updateComponentsPanel();
                 mainFrame.getRootPane().revalidate();
                 mainFrame.getRootPane().repaint();
             }

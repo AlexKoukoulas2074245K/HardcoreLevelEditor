@@ -1,5 +1,6 @@
 package com.hardcoreleveleditor.panels;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,7 @@ public class MainPanel extends JPanel
     private final JFrame mainFrame;
     private final LevelEditorPanel levelEditorPanel;
     private final ComponentsPanel componentsPanel;
+    private final ResourcePanel resourcePanel;
 
     public MainPanel(final JFrame mainFrame, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
     {
@@ -29,7 +31,7 @@ public class MainPanel extends JPanel
         componentsScrollPane.getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT);
         componentsScrollPane.setPreferredSize(new Dimension(180, 350));
 
-        JPanel resourcePanel = new ResourcePanel(componentsPanel);
+        resourcePanel = new ResourcePanel(componentsPanel);
         JScrollPane resourcesScrollPane = new JScrollPane(resourcePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         resourcesScrollPane.getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT);
         resourcesScrollPane.setPreferredSize(new Dimension(180, 350));
@@ -58,4 +60,5 @@ public class MainPanel extends JPanel
         return levelEditorPanel;
     }
     public ComponentsPanel getComponentsPanel() { return componentsPanel; }
+    public ResourcePanel getResourcePanel() { return resourcePanel; }
 }

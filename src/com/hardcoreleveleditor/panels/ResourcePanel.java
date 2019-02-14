@@ -3,7 +3,6 @@ package com.hardcoreleveleditor.panels;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -65,6 +64,19 @@ public class ResourcePanel extends JPanel
         g2.dispose();
     }
 
+    public Image getImageFromAnimationName(final String animationName)
+    {
+        for (GridCellPanel cell: resourceCells)
+        {
+            if (cell.getAnimationName().equals(animationName))
+            {
+                return cell.getImage();
+            }
+        }
+
+        return null;
+    }
+
     private void loadResources()
     {
         try {
@@ -120,14 +132,14 @@ public class ResourcePanel extends JPanel
     private void fillResourceCellsWithResourceImages()
     {
         GridCellPanel emptyGridCell = new GridCellPanel(componentsPanel, RESOURCE_GRID_CELL_SIZE, RESOURCE_GRID_CELL_SIZE, true);
-        emptyGridCell.setAnimationImage(emptyImage, "environments/empty");
+        emptyGridCell.setVisual(emptyImage, "environments/empty");
         add(emptyGridCell);
         resourceCells.add(emptyGridCell);
 
         for (Map.Entry<Image, String> imagePathEntry: resourceImagesToAbsolutePaths.entrySet())
         {
             GridCellPanel gridCell = new GridCellPanel(componentsPanel, RESOURCE_GRID_CELL_SIZE, RESOURCE_GRID_CELL_SIZE, true);
-            gridCell.setAnimationImage(imagePathEntry.getKey(), imagePathEntry.getValue());
+            gridCell.setVisual(imagePathEntry.getKey(), imagePathEntry.getValue());
             add(gridCell);
             resourceCells.add(gridCell);
         }

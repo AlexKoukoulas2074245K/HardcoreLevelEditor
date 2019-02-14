@@ -1,6 +1,7 @@
 package com.hardcoreleveleditor.handlers;
 
 import com.hardcoreleveleditor.components.ShaderComponent;
+import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 import com.hardcoreleveleditor.panels.LevelEditorPanel;
 
@@ -12,13 +13,11 @@ import java.awt.event.KeyEvent;
 
 public class SetCellEntityNameMenuItemActionHandler implements ActionListener
 {
-    private final JFrame mainFrame;
-    private final LevelEditorPanel levelEditorPanel;
+    private final MainFrame mainFrame;
 
-    public SetCellEntityNameMenuItemActionHandler(final JFrame mainFrame, final LevelEditorPanel levelEditorPanel)
+    public SetCellEntityNameMenuItemActionHandler(final MainFrame mainFrame)
     {
         this.mainFrame = mainFrame;
-        this.levelEditorPanel = levelEditorPanel;
     }
 
     @Override
@@ -44,7 +43,7 @@ public class SetCellEntityNameMenuItemActionHandler implements ActionListener
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        GridCellPanel cellAlreadyContainingCustomName = levelEditorPanel.getCellWithCustomName(cellEntityNameField.getText());
+                        GridCellPanel cellAlreadyContainingCustomName = mainFrame.getMainPanel().getLevelEditorPanel().getCellWithCustomName(cellEntityNameField.getText());
                         if (cellAlreadyContainingCustomName != null)
                         {
                             cellAlreadyContainingCustomName.setCustomCellName(null);

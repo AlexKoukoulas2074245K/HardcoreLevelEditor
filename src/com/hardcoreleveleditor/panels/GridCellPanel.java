@@ -10,8 +10,6 @@ import javafx.geometry.Point3D;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -90,7 +88,7 @@ public class GridCellPanel extends JPanel implements MouseListener
         return cellComponents;
     }
 
-    public void setAnimationImage(final Image image, final String animationName)
+    public void setVisual(final Image image, final String animationName)
     {
         this.animationIdleImage = image;
         this.animationName = animationName;
@@ -125,6 +123,10 @@ public class GridCellPanel extends JPanel implements MouseListener
     }
 
     public String getAnimationName() { return this.animationName; }
+
+    public void setImage(final Image image) { this.animationIdleImage = image; }
+
+    public void setAnimationName(final String animationName) { this.animationName = animationName; }
 
     public int getCol() { return this.cellCol; }
 
@@ -224,7 +226,7 @@ public class GridCellPanel extends JPanel implements MouseListener
     {
         if (sSelectedGridCell != null && sSelectedGridCell.isResourceCell)
         {
-            setAnimationImage(sSelectedGridCell.animationIdleImage, sSelectedGridCell.animationName);
+            setVisual(sSelectedGridCell.animationIdleImage, sSelectedGridCell.animationName);
         }
         else
         {

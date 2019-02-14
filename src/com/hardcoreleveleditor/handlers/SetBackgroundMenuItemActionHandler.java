@@ -1,5 +1,6 @@
 package com.hardcoreleveleditor.handlers;
 
+import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 import com.hardcoreleveleditor.panels.LevelEditorPanel;
 import com.hardcoreleveleditor.panels.MainPanel;
@@ -12,16 +13,18 @@ import java.util.logging.Level;
 
 public class SetBackgroundMenuItemActionHandler implements ActionListener
 {
-    private final MainPanel mainPanel;
+    private final MainFrame mainFrame;
 
-    public SetBackgroundMenuItemActionHandler(final MainPanel mainPanel)
+    public SetBackgroundMenuItemActionHandler(final MainFrame mainFrame)
     {
-        this.mainPanel = mainPanel;
+        this.mainFrame = mainFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        MainPanel mainPanel = mainFrame.getMainPanel();
+
         if (GridCellPanel.sSelectedGridCell != null)
         {
             if (GridCellPanel.sSelectedGridCell.isResourceCell())
