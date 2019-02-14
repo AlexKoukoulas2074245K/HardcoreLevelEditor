@@ -54,7 +54,7 @@ public class NewMenuItemActionHandler implements ActionListener
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                mainFrame.resetContentPane(new MainPanel(mainFrame, (int)levelRowsPanel.getTextField().getValue(), (int)levelColsPanel.getTextField().getValue(), (int)newLevelCellSizePanel.getTextField().getValue()));
+                mainFrame.resetContentPane(new MainPanel(mainFrame, mainFrame.getResourceDirectoryAbsolutePath(), (int)levelRowsPanel.getTextField().getValue(), (int)levelColsPanel.getTextField().getValue(), (int)newLevelCellSizePanel.getTextField().getValue()));
                 jDialog.dispose();
                 mainFrame.getRootPane().revalidate();
                 mainFrame.getRootPane().repaint();

@@ -6,12 +6,15 @@ import com.hardcoreleveleditor.panels.MainPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.*;
 import java.security.Key;
 
 public class MainFrame extends JFrame
 {
-    private MainPanel mainPanel;
     private static final int MENU_MODIFIER_KEY = System.getProperty("os.name").indexOf("Win") >= 0 ? ActionEvent.CTRL_MASK : ActionEvent.META_MASK;
+
+    private MainPanel mainPanel;
+    private String resourceDirectoryAbsolutePath;
 
     public MainFrame()
     {
@@ -20,8 +23,10 @@ public class MainFrame extends JFrame
         try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); }
         catch (Exception e) { e.printStackTrace(); }
 
+        checkForConfigFile();
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        resetContentPane(new MainPanel(this, 20, 20, 80));
+        resetContentPane(new MainPanel(this, resourceDirectoryAbsolutePath, 20, 20, 80));
         createMenus();
         pack();
         setMinimumSize(getSize());
@@ -36,10 +41,56 @@ public class MainFrame extends JFrame
         return this.mainPanel;
     }
 
+    public String getResourceDirectoryAbsolutePath()
+    {
+        return resourceDirectoryAbsolutePath;
+    }
+
+    public void setResourceDirectoryAbsolutePath(final String resourceDirectoryAbsolutePath)
+    {
+        this.resourceDirectoryAbsolutePath = resourceDirectoryAbsolutePath;
+
+        File configFile = new File("config.hle");
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(configFile)))
+        {
+            bw.write(resourceDirectoryAbsolutePath);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public void resetContentPane(final MainPanel mainPanel)
     {
         this.mainPanel = mainPanel;
         setContentPane(mainPanel);
+    }
+
+    private void checkForConfigFile()
+    {
+        File configFile = new File("config.hle");
+        if (configFile.exists())
+        {
+            try(BufferedReader br = new BufferedReader(new FileReader(configFile)))
+            {
+                resourceDirectoryAbsolutePath = br.readLine();
+            }
+            catch (FileNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Config file not found, please select the project's root resource directory", "No config found", JOptionPane.INFORMATION_MESSAGE);
+            SelectResourceDirectoryHandler resourceDirectoryHandler = new SelectResourceDirectoryHandler(this);
+            resourceDirectoryHandler.selectResourceDirectory();
+        }
     }
 
     private void createMenus()
@@ -59,6 +110,7 @@ public class MainFrame extends JFrame
         JMenuItem newMenuItem = new JMenuItem("New..");
         JMenuItem loadMenuItem = new JMenuItem("Open..");
         JMenuItem saveMenuItem = new JMenuItem("Save As..");
+        JMenuItem changeResourceDirectoryMenuItem = new JMenuItem("Change Root Res Directory");
         JMenuItem exitMenuItem = new JMenuItem("Exit");
 
         newMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, MENU_MODIFIER_KEY));
@@ -70,12 +122,16 @@ public class MainFrame extends JFrame
         saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, MENU_MODIFIER_KEY));
         saveMenuItem.addActionListener(new SaveAsMenuItemActionHandler(this));
 
+        changeResourceDirectoryMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, MENU_MODIFIER_KEY));
+        changeResourceDirectoryMenuItem.addActionListener(new SelectResourceDirectoryHandler(this));
+
         exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, MENU_MODIFIER_KEY));
         exitMenuItem.addActionListener(new ExitMenuItemActionHandler(this));
 
         fileMenu.add(newMenuItem);
         fileMenu.add(loadMenuItem);
         fileMenu.add(saveMenuItem);
+        fileMenu.add(changeResourceDirectoryMenuItem);
         fileMenu.add(exitMenuItem);
 
         return fileMenu;

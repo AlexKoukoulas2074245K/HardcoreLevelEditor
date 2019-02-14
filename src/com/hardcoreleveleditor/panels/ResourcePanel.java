@@ -13,9 +13,8 @@ import java.util.regex.Pattern;
 
 public class ResourcePanel extends JPanel
 {
-    //private static final String RESOURCE_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/" : "/Users/alex/Desktop/Code/Hardcore2D/res/environments/";
-    private static final String RESOURCE_ENVIRONMENTS_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/environments" : "/Users/alex/Desktop/Code/Hardcore2D/res/environments/";
-    private static final String RESOURCE_CHARACTERS_PATH = System.getProperty("os.name").indexOf("Win") >= 0 ? "C:/Users/alex.koukoulas/Code/Hardcore2D/res/characters" : "/Users/alex/Desktop/Code/Hardcore2D/res/characters/";
+    public static final String RESOURCE_ENVIRONMENTS_RELATIVE_PATH = "/environments";
+    public static final String RESOURCE_CHARACTERS_RELATIVE_PATH = "/characters";
 
     private static final String TOP_LEVEL_RESOURCES_DIRECTORY_NAME = "res";
     private static final String BOTTOM_LEVEL_ANIMATION_DIRECTORY_NAME = "idle";
@@ -25,10 +24,13 @@ public class ResourcePanel extends JPanel
     private final Map<Image, String> resourceImagesToAbsolutePaths = new HashMap<>();
     private final List<GridCellPanel> resourceCells = new ArrayList<>();
     private Image emptyImage = null;
+    private final String absoluteResDirectoryPath;
 
-    public ResourcePanel(final ComponentsPanel componentsPanel)
+    public ResourcePanel(final ComponentsPanel componentsPanel, final String absoluteResDirectoryPath)
     {
         super(new GridLayout(0, 2));
+
+        this.absoluteResDirectoryPath = absoluteResDirectoryPath;
         this.componentsPanel = componentsPanel;
 
         loadResources();
@@ -80,13 +82,13 @@ public class ResourcePanel extends JPanel
     private void loadResources()
     {
         try {
-            Files.walk(Paths.get(RESOURCE_ENVIRONMENTS_PATH))
+            Files.walk(Paths.get(absoluteResDirectoryPath + RESOURCE_ENVIRONMENTS_RELATIVE_PATH))
                     .filter(Files::isRegularFile)
                     .forEach((file) -> {
                         parseResourceFile(file);
                     });
 
-            Files.walk(Paths.get(RESOURCE_CHARACTERS_PATH))
+            Files.walk(Paths.get(absoluteResDirectoryPath + RESOURCE_CHARACTERS_RELATIVE_PATH))
                     .filter(Files::isRegularFile)
                     .forEach((file) -> {
                         parseResourceFile(file);

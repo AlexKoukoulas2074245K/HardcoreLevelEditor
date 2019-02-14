@@ -20,7 +20,7 @@ public class MainPanel extends JPanel
     private final ComponentsPanel componentsPanel;
     private final ResourcePanel resourcePanel;
 
-    public MainPanel(final JFrame mainFrame, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
+    public MainPanel(final JFrame mainFrame, final String resourceDirectoryAbsolutePath, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
     {
         super(new BorderLayout(H_COMPONENT_GAP, V_COMPONENT_GAP));
 
@@ -31,7 +31,7 @@ public class MainPanel extends JPanel
         componentsScrollPane.getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT);
         componentsScrollPane.setPreferredSize(new Dimension(180, 350));
 
-        resourcePanel = new ResourcePanel(componentsPanel);
+        resourcePanel = new ResourcePanel(componentsPanel, resourceDirectoryAbsolutePath);
         JScrollPane resourcesScrollPane = new JScrollPane(resourcePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         resourcesScrollPane.getVerticalScrollBar().setUnitIncrement(SCROLL_UNIT);
         resourcesScrollPane.setPreferredSize(new Dimension(180, 350));

@@ -52,7 +52,7 @@ public class OpenMenuItemActionHandler implements ActionListener
             final int cellCols = (int)(rootJsonObject.getJSONObject("horBounds").getDouble("right")/cellSize);
             final int cellRows = (int)(rootJsonObject.getJSONObject("verBounds").getDouble("top")/cellSize);
 
-            MainPanel mainPanel = new MainPanel(mainFrame, cellRows ,cellCols, cellSize);
+            MainPanel mainPanel = new MainPanel(mainFrame, mainFrame.getResourceDirectoryAbsolutePath(), cellRows ,cellCols, cellSize);
             mainFrame.resetContentPane(mainPanel);
 
             JSONArray entityArray = rootJsonObject.getJSONArray("entities");
