@@ -9,10 +9,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.logging.Level;
 
 public class LevelEditorPanel extends JPanel
 {
     public static int sCurrentCellSize = 0;
+    public static boolean sHitBoxDisplay = true;
 
     private static final Color HITBOX_COLOR = new Color(255, 0,255, 128);
 
@@ -192,7 +194,7 @@ public class LevelEditorPanel extends JPanel
             }
 
             // Draw physics hitbox
-            if (gridCellPanel.getCellComponents().containsKey("PhysicsComponent"))
+            if (LevelEditorPanel.sHitBoxDisplay && gridCellPanel.getCellComponents().containsKey("PhysicsComponent"))
             {
                 PhysicsComponent physicsComponent = (PhysicsComponent)gridCellPanel.getCellComponents().get("PhysicsComponent");
                 g2.setColor(HITBOX_COLOR);

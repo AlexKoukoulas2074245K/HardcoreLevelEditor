@@ -108,6 +108,7 @@ public class MainFrame extends JFrame
         menuBar.add(createBackgroundMenu());
         menuBar.add(createComponentsMenu());
         menuBar.add(createGameMenu());
+        menuBar.add(createOptionsMenu());
         setJMenuBar(menuBar);
     }
 
@@ -224,5 +225,17 @@ public class MainFrame extends JFrame
 
         gameMenu.add(setCellEntityNameMenuItem);
         return gameMenu;
+    }
+
+    private JMenu createOptionsMenu()
+    {
+        JMenu optionsMenu = new JMenu("Options");
+
+        JMenuItem toggleHitBoxDisplayMenuItem = new JMenuItem("Toggle Hitbox Display");
+        toggleHitBoxDisplayMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, MENU_MODIFIER_KEY));
+        toggleHitBoxDisplayMenuItem.addActionListener(new ToggleHitBoxDisplayMenuItemActionHandler(this));
+
+        optionsMenu.add(toggleHitBoxDisplayMenuItem);
+        return optionsMenu;
     }
 }
