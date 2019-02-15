@@ -2,6 +2,7 @@ package com.hardcoreleveleditor.main;
 
 import com.hardcoreleveleditor.handlers.*;
 import com.hardcoreleveleditor.panels.MainPanel;
+import com.hardcoreleveleditor.panels.ResourcePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -75,6 +76,12 @@ public class MainFrame extends JFrame
             try(BufferedReader br = new BufferedReader(new FileReader(configFile)))
             {
                 resourceDirectoryAbsolutePath = br.readLine();
+                if (new File(resourceDirectoryAbsolutePath + ResourcePanel.RESOURCE_ENVIRONMENTS_RELATIVE_PATH).exists() == false)
+                {
+                    JOptionPane.showMessageDialog(this, "Chosen file was not a resource directory.\nPlease select the project's root resource directory", "Resource directory", JOptionPane.ERROR_MESSAGE);
+                    SelectResourceDirectoryHandler resourceDirectoryHandler = new SelectResourceDirectoryHandler(this);
+                    resourceDirectoryHandler.selectResourceDirectory();
+                }
             }
             catch (FileNotFoundException e)
             {
