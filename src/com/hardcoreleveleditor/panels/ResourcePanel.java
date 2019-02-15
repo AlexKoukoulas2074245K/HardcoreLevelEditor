@@ -13,6 +13,18 @@ import java.util.regex.Pattern;
 
 public class ResourcePanel extends JPanel
 {
+    private class ImageToPathContainer
+    {
+        public final Image image;
+        public final String path;
+
+        ImageToPathContainer(final Image image, final String path)
+        {
+            this.image = image;
+            this.path = path;
+        }
+    }
+
     public static final String RESOURCE_ENVIRONMENTS_RELATIVE_PATH = "/environments";
     public static final String RESOURCE_CHARACTERS_RELATIVE_PATH = "/characters";
 
@@ -21,7 +33,7 @@ public class ResourcePanel extends JPanel
     private static final int RESOURCE_GRID_CELL_SIZE = 80;
 
     private final ComponentsPanel componentsPanel;
-    private final Map<Image, String> resourceImagesToAbsolutePaths = new HashMap<>();
+    private final List<ImageToPathContainer> resourceImagesToAbsolutePaths = new LinkedList<>();
     private final List<GridCellPanel> resourceCells = new ArrayList<>();
     private Image emptyImage = null;
     private final String absoluteResDirectoryPath;
@@ -121,7 +133,7 @@ public class ResourcePanel extends JPanel
                 }
                 else
                 {
-                    resourceImagesToAbsolutePaths.put(loadedImage, getAnimationNameFromFilePath(filePath.toString()));
+                    resourceImagesToAbsolutePaths.add(new ImageToPathContainer(loadedImage, getAnimationNameFromFilePath(filePath.toString())));
                 }
             }
             catch (IOException e)
@@ -138,10 +150,10 @@ public class ResourcePanel extends JPanel
         add(emptyGridCell);
         resourceCells.add(emptyGridCell);
 
-        for (Map.Entry<Image, String> imagePathEntry: resourceImagesToAbsolutePaths.entrySet())
+        for (ImageToPathContainer imagePathEntry: resourceImagesToAbsolutePaths)
         {
             GridCellPanel gridCell = new GridCellPanel(componentsPanel, RESOURCE_GRID_CELL_SIZE, RESOURCE_GRID_CELL_SIZE, true);
-            gridCell.setVisual(imagePathEntry.getKey(), imagePathEntry.getValue());
+            gridCell.setVisual(imagePathEntry.image, imagePathEntry.path);
             add(gridCell);
             resourceCells.add(gridCell);
         }

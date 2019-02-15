@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9bd2545-9823-4115-a878-9cbe13f070af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SelectResourceDirectoryHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SelectResourceDirectoryHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +57,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SelectResourceDirectoryHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="467">
@@ -70,11 +69,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+            <state relative-caret-position="308">
+              <caret line="191" column="1" lean-forward="true" selection-start-line="191" selection-start-column="1" selection-end-line="191" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/TreeMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="1293" selection-start-line="1293" selection-end-line="1293" />
             </state>
           </provider>
         </entry>
@@ -164,11 +172,11 @@
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/MainPanel.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/NewMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/OpenMenuItemActionHandler.java" />
-        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SaveAsMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/PasteMenuItemActionHandler.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/main/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/handlers/SelectResourceDirectoryHandler.java" />
+        <option value="$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java" />
       </list>
     </option>
   </component>
@@ -334,16 +342,15 @@
       <workItem from="1550137057648" duration="4350000" />
       <workItem from="1550156304912" duration="1707000" />
       <workItem from="1550222499709" duration="1282000" />
-      <workItem from="1550224084861" duration="304000" />
+      <workItem from="1550224084861" duration="1284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83884000" />
+    <option name="totallyTimeSpent" value="84864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="804" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24821173" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -354,7 +361,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49928468" weight="0.32863188" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.46852645" visible="true" weight="0.3300562" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.46852645" weight="0.3300562" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.7058824" weight="0.3891578" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -599,13 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/MainPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -637,6 +637,20 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/TreeMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="1293" selection-start-line="1293" selection-end-line="1293" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/hardcoreleveleditor/panels/ResourcePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="191" column="1" lean-forward="true" selection-start-line="191" selection-start-column="1" selection-end-line="191" selection-end-column="1" />
         </state>
       </provider>
     </entry>
