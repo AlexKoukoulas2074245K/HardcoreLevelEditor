@@ -150,7 +150,7 @@ public class LevelEditorPanel extends JPanel
                 GridCellBackupInfo cellBackupInfo = cellInfoEntry.getValue();
 
                 cellInfoEntry.getKey().getCellComponents().clear();
-                
+
                 for (Map.Entry<String, IComponent> componentEntry: cellBackupInfo.gridCellComponents.entrySet())
                 {
                     cellInfoEntry.getKey().getCellComponents().put(componentEntry.getKey(), componentEntry.getValue());
