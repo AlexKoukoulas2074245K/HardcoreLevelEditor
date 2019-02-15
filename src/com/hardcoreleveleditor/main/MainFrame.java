@@ -148,9 +148,13 @@ public class MainFrame extends JFrame
     {
         JMenu editMenu = new JMenu("Edit");
 
+        JMenuItem undoMenuItem = new JMenuItem("Undo");
         JMenuItem cutMenuItem = new JMenuItem("Cut");
         JMenuItem copyMenuItem = new JMenuItem("Copy");
         JMenuItem pasteMenuItem = new JMenuItem("Paste");
+
+        undoMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, MENU_MODIFIER_KEY));
+        undoMenuItem.addActionListener(new UndoMenuItemActionHandler(this));
 
         cutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, MENU_MODIFIER_KEY));
         cutMenuItem.addActionListener(new CutMenuItemActionHandler(this));
@@ -161,6 +165,7 @@ public class MainFrame extends JFrame
         pasteMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, MENU_MODIFIER_KEY));
         pasteMenuItem.addActionListener(new PasteMenuItemActionHandler(this));
 
+        editMenu.add(undoMenuItem);
         editMenu.add(cutMenuItem);
         editMenu.add(copyMenuItem);
         editMenu.add(pasteMenuItem);

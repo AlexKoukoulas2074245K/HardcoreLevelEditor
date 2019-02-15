@@ -1,11 +1,13 @@
 package com.hardcoreleveleditor.panels;
 
+import com.hardcoreleveleditor.components.IComponent;
 import com.hardcoreleveleditor.components.PhysicsComponent;
 import com.hardcoreleveleditor.components.ShaderComponent;
 
+import java.util.Timer;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 public class LevelEditorPanel extends JPanel
@@ -21,6 +23,25 @@ public class LevelEditorPanel extends JPanel
     private final List<GridCellPanel> levelGridCells = new ArrayList<>();
     private GridCellPanel backgroundInvisibleCell = null;
     private GridCellPanel[][] gridCells = null;
+
+
+    private class GridCellBackupInfo
+    {
+        public final Map<String,IComponent> gridCellComponents;
+        public final Image animationIdleImage;
+        public final String animationName;
+        public final String customCellName;
+
+        public GridCellBackupInfo(final Map<String, IComponent> gridCellComponents, final Image animationIdleImage, final String animationName, final String customCellName)
+        {
+            this.gridCellComponents = gridCellComponents;
+            this.animationIdleImage = animationIdleImage;
+            this.animationName = animationName;
+            this.customCellName = customCellName;
+        }
+    }
+
+    private Map<GridCellPanel, GridCellBackupInfo> gridCellsPreviousState = new HashMap<>();
 
     public LevelEditorPanel(final ComponentsPanel componentsPanel, final int levelEditorCellRows, final int levelEditorCellCols, final int cellSize)
     {
@@ -92,6 +113,54 @@ public class LevelEditorPanel extends JPanel
     public int getCellSize()
     {
         return cellSize;
+    }
+
+    public void doSomethingRepeatedly() {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate( new TimerTask()
+        {
+            public void run()
+            {
+                try
+                {
+                    synchronized (gridCellsPreviousState)
+                    {
+                        gridCellsPreviousState.clear();
+                        for (GridCellPanel cell : levelGridCells)
+                        {
+                            gridCellsPreviousState.put(cell, new GridCellBackupInfo(cell.getCloneOfComponents(), cell.getImage(), cell.getAnimationName(), cell.getCustomCellName()));
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }, 0, 5000);
+    }
+
+    public void undo()
+    {
+        synchronized (gridCellsPreviousState)
+        {
+            for (Map.Entry<GridCellPanel, GridCellBackupInfo> cellInfoEntry : gridCellsPreviousState.entrySet())
+            {
+                GridCellBackupInfo cellBackupInfo = cellInfoEntry.getValue();
+
+                cellInfoEntry.getKey().getCellComponents().clear();
+                
+                for (Map.Entry<String, IComponent> componentEntry: cellBackupInfo.gridCellComponents.entrySet())
+                {
+                    cellInfoEntry.getKey().getCellComponents().put(componentEntry.getKey(), componentEntry.getValue());
+                }
+
+                cellInfoEntry.getKey().setAnimationName(cellBackupInfo.animationName);
+                cellInfoEntry.getKey().setImage(cellBackupInfo.animationIdleImage);
+                cellInfoEntry.getKey().setCustomCellName(cellBackupInfo.customCellName);
+            }
+        }
     }
 
     @Override

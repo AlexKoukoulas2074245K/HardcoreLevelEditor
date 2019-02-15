@@ -48,6 +48,8 @@ public class MainPanel extends JPanel
         
         add(resourceAndComponentPanel, BorderLayout.EAST);
         add(levelEditorScrollPane, BorderLayout.CENTER);
+
+        levelEditorPanel.doSomethingRepeatedly();
     }
 
     public List<GridCellPanel> getAllLevelEditorGridCells()

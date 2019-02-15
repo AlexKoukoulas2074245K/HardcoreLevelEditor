@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -67,6 +68,17 @@ public class GridCellPanel extends JPanel implements MouseListener
         resetDynamicProperties();
 
         setPreferredSize(new Dimension(cellWidth, cellHeight));
+    }
+
+    public Map<String, IComponent> getCloneOfComponents()
+    {
+        Map<String, IComponent> componentsClone = new TreeMap<>();
+        for (Map.Entry<String, IComponent> entry: cellComponents.entrySet())
+        {
+            componentsClone.put(entry.getKey(), entry.getValue().getClone());
+        }
+
+        return componentsClone;
     }
 
     public GridCellPanel getClone()
