@@ -74,7 +74,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             sb.append("{"); sb.append('\n');
             sb.append("\t\"horBounds\": { \"left\": 0.0, \"right\": " + levelHorBound + " },"); sb.append('\n');
             sb.append("\t\"verBounds\": { \"bottom\": 0.0, \"top\": " + levelVerBound + " },"); sb.append('\n');
-            sb.append("\t\"cached_animations\": [\"effects/player_swing/idle\", \"effects/player_shuriken/idle\"],"); sb.append('\n');
+            sb.append("\t\"cached_animations\": [\"effects/player_swing/idle\", \"effects/player_shuriken/idle\", \"misc/player_healthbar_skeleton/idle\", \"misc/player_healthbar_parts/idle\"],"); sb.append('\n');
             sb.append("\t\"entities\": "); sb.append('\n');
             sb.append("\t["); sb.append('\n');
 
