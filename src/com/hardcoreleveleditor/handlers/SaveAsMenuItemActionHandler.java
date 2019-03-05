@@ -123,7 +123,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
                     }
                 }
 
-                if (gridCell.getAnimationName().startsWith("player"))
+                if (gridCell.getCustomCellName() != null && gridCell.getCustomCellName().startsWith("player"))
                 {
                     playerCells.add(gridCell);
                 }
