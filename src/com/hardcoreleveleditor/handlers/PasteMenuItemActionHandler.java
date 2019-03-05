@@ -1,6 +1,7 @@
 package com.hardcoreleveleditor.handlers;
 
 import com.hardcoreleveleditor.components.IComponent;
+import com.hardcoreleveleditor.main.MainFrame;
 import com.hardcoreleveleditor.panels.GridCellPanel;
 
 import javax.swing.*;
@@ -10,9 +11,9 @@ import java.util.Map;
 
 public class PasteMenuItemActionHandler implements ActionListener
 {
-    private final JFrame mainFrame;
+    private final MainFrame mainFrame;
 
-    public PasteMenuItemActionHandler(final JFrame frame)
+    public PasteMenuItemActionHandler(final MainFrame frame)
     {
         this.mainFrame = frame;
     }
@@ -33,6 +34,8 @@ public class PasteMenuItemActionHandler implements ActionListener
             {
                 GridCellPanel.sSelectedGridCell.getCellComponents().put(entry.getKey(), entry.getValue().getClone());
             }
+
+            mainFrame.getMainPanel().getComponentsPanel().updateComponentsPanel();
         }
 
         mainFrame.getRootPane().revalidate();

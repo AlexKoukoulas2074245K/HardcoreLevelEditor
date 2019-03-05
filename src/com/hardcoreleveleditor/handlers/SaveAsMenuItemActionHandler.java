@@ -103,6 +103,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             List<GridCellPanel> characterCells = new ArrayList<>();
             List<GridCellPanel> environmentCells = new ArrayList<>();
             List<GridCellPanel> kinematicCells = new ArrayList<>();
+            List<GridCellPanel> playerCells = new ArrayList<>();
 
             for (GridCellPanel gridCell: levelEditorPanel.getAllLevelGridCells())
             {
@@ -122,7 +123,11 @@ public class SaveAsMenuItemActionHandler implements ActionListener
                     }
                 }
 
-                if (gridCell.getAnimationName().indexOf("characters") >= 0)
+                if (gridCell.getAnimationName().startsWith("player"))
+                {
+                    playerCells.add(gridCell);
+                }
+                else if (gridCell.getAnimationName().indexOf("characters") >= 0)
                 {
                     characterCells.add(gridCell);
                 }
@@ -135,6 +140,7 @@ public class SaveAsMenuItemActionHandler implements ActionListener
             writeCellsToStringBuilder(environmentCells, sb);
             writeCellsToStringBuilder(kinematicCells, sb);
             writeCellsToStringBuilder(characterCells, sb);
+            writeCellsToStringBuilder(playerCells, sb);
 
             sb.setLength(sb.length() - 2);
             sb.append('\n');
